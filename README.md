@@ -74,7 +74,7 @@ src/lib/                  маски и проверка формы, загру�
 
 | Переменная | Назначение |
 | --- | --- |
-| `NEXT_PUBLIC_BASE_PATH` | Префикс пути, например `/hall-17-04` для GitHub Pages. В CI подставляется автоматически |
+| `NEXT_PUBLIC_BASE_PATH` | Префикс пути, например `/hall-17-04` для GitHub Pages. В CI задаётся по имени репозитория |
 | `NEXT_PUBLIC_SITE_URL` | Полный адрес сайта для canonical, Open Graph и разметки schema.org |
 | `NEXT_PUBLIC_BOOKING_ENDPOINT` | Адрес, куда отправлять заявки. Если не задан — демо-режим |
 | `NEXT_PUBLIC_INDEXABLE` | `true` открывает сайт поисковикам. По умолчанию стоит `noindex`, пока это демо |
@@ -86,10 +86,10 @@ src/lib/                  маски и проверка формы, загру�
 При каждом пуше в `main` workflow `.github/workflows/deploy.yml`:
 
 1. проверяет код линтером и TypeScript;
-2. собирает сайт;
-3. публикует его на GitHub Pages.
+2. собирает сайт с нужным префиксом пути;
+3. выкладывает готовую сборку в ветку `gh-pages`.
 
-В настройках репозитория должно быть выбрано Settings → Pages → Source: **GitHub Actions**.
+GitHub Pages раздаёт сайт из этой ветки (Settings → Pages → Deploy from a branch → `gh-pages` / root). Ветку `gh-pages` вручную не правят: при каждом деплое она перезаписывается.
 
 Папку `out/` можно выложить на любой статический хостинг: Netlify, Vercel, Cloudflare Pages или обычный сервер. Если сайт открывается в корне домена, `NEXT_PUBLIC_BASE_PATH` оставьте пустым.
 

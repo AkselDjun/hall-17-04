@@ -9,7 +9,7 @@ import { Photo } from "../ui/Photo";
 import { StoryViewer } from "./StoryViewer";
 import styles from "./Reviews.module.css";
 
-export const storyNumber = (index: number) => String(index + 1).padStart(2, "0");
+const storyNumber = (index: number) => String(index + 1).padStart(2, "0");
 
 export function ReviewStories({ items }: { items: Review[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
