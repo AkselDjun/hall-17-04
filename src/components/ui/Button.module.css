@@ -1,4 +1,7 @@
 .button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +58,58 @@
 .solid:hover {
   background: var(--accent-hover);
   color: var(--bg);
+}
+
+.solid::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+
+.accentOutline::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+
+.accentOutline:hover {
+  background: none;
+}
+
+.accentOutline:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.outline::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: rgb(201 166 94 / 0.08);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s var(--ease);
+}
+
+.outline:hover::before {
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .solid:hover::after {
+    transform: translateX(110%);
+    transition: transform 0.9s var(--ease);
+  }
 }
 
 .outline {

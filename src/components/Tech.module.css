@@ -64,7 +64,43 @@
 .shot {
   position: relative;
   aspect-ratio: 520 / 282;
+  overflow: hidden;
   background: var(--surface);
+}
+
+.row {
+  transition-property: opacity, transform, border-color;
+}
+
+.row:hover {
+  border-top-color: var(--accent-line);
+}
+
+.row:hover .label {
+  color: var(--accent);
+}
+
+.label {
+  transition: color 0.25s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .shot img {
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(-7%) scale(1.16);
+  }
+
+  to {
+    transform: translateY(7%) scale(1.16);
+  }
 }
 
 @media (max-width: 1099px) {

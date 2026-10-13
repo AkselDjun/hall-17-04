@@ -18,11 +18,13 @@
   grid-area: figure;
   position: relative;
   aspect-ratio: 560 / 620;
+  overflow: hidden;
   background: var(--surface);
 }
 
 .caption {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   padding: 12px 16px;
@@ -60,6 +62,25 @@
 
 .item:last-child {
   border-bottom: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .figure img {
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(-5%) scale(1.12);
+  }
+
+  to {
+    transform: translateY(5%) scale(1.12);
+  }
 }
 
 .number {

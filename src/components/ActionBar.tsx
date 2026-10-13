@@ -18,7 +18,7 @@ export function ActionBar() {
   }, []);
 
   return (
-    <nav className={cx(styles.bar, hidden && styles.hidden)} aria-label="Быстрые действия">
+    <nav className={cx(styles.bar, styles.intro, hidden && styles.hidden)} aria-label="Быстрые действия">
       <a href={contacts.phoneHref}>
         <PhoneIcon size={16} />
         Звонок

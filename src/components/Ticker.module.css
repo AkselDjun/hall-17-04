@@ -33,6 +33,18 @@
   gap: var(--gap);
 }
 
+.ticker:hover .track {
+  animation-play-state: paused;
+}
+
+.group li {
+  transition: color 0.3s;
+}
+
+.group li:hover {
+  color: var(--accent);
+}
+
 .dot {
   width: var(--dot);
   height: var(--dot);

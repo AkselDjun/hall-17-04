@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { offers } from "@/content/site";
 import { cx } from "@/lib/cx";
 import { Carousel } from "../ui/Carousel";
@@ -24,7 +25,12 @@ export function Offers() {
         label="Предложения и цены"
       >
         {offers.items.map((offer, index) => (
-          <li key={offer.title} className={cx(styles.cell, offer.wide && styles.wide)}>
+          <li
+            key={offer.title}
+            className={cx(styles.cell, offer.wide && styles.wide)}
+            data-reveal="ticket"
+            style={{ "--i": index } as CSSProperties}
+          >
             <Ticket offer={offer} number={index + 1} />
           </li>
         ))}

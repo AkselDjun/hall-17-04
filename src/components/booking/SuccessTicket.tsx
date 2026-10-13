@@ -4,7 +4,6 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import { contacts } from "@/content/site";
 import type { BookingData } from "@/lib/booking";
 import { button } from "../ui/button";
-import { CheckIcon } from "../ui/icons";
 import styles from "./SuccessTicket.module.css";
 
 const columnsFor = (count: number) => {
@@ -39,7 +38,9 @@ export function SuccessTicket({ data, onReset }: { data: BookingData; onReset: (
         <div className={styles.main}>
           <p className={styles.status}>
             <span className={styles.check}>
-              <CheckIcon size={14} />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M5 12.5l4.5 4.5L19 7.5" pathLength={1} />
+              </svg>
             </span>
             Заявка принята
           </p>
@@ -65,6 +66,9 @@ export function SuccessTicket({ data, onReset }: { data: BookingData; onReset: (
           </p>
           <p className={styles.day}>{day ? `${day[1]}.${day[2]}` : "17.04"}</p>
           <p className={styles.dayLabel}>{day ? "Ваша дата" : "Дату обсудим"}</p>
+          <span className={styles.stamp} aria-hidden="true">
+            Принято
+          </span>
         </div>
       </article>
       <div className={styles.after}>

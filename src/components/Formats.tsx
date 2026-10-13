@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { formats } from "@/content/site";
 import { BookingLink } from "./booking/BookingContext";
 import { Carousel } from "./ui/Carousel";
@@ -23,9 +24,9 @@ export function Formats() {
         count={formats.items.length}
         label="Форматы мероприятий"
       >
-        {formats.items.map((item) => (
-          <li key={item.title} className={styles.card}>
-            <div className={styles.poster}>
+        {formats.items.map((item, index) => (
+          <li key={item.title} className={styles.card} data-reveal="up" style={{ "--i": index } as CSSProperties}>
+            <div className={styles.poster} data-reveal="image" style={{ "--i": index } as CSSProperties}>
               <Photo
                 src={item.photo.src}
                 alt={item.photo.alt}
@@ -44,10 +45,14 @@ export function Formats() {
       </Carousel>
 
       <div className={styles.also}>
-        <span className={styles.alsoLabel}>{formats.alsoLabel}</span>
+        <span className={styles.alsoLabel} data-reveal="fade">
+          {formats.alsoLabel}
+        </span>
         <ul className={styles.chips}>
-          {formats.also.map((item) => (
-            <li key={item}>{item}</li>
+          {formats.also.map((item, index) => (
+            <li key={item} data-reveal="up" style={{ "--i": index, "--stagger": "60ms" } as CSSProperties}>
+              {item}
+            </li>
           ))}
         </ul>
       </div>

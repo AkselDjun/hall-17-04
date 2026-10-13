@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { space } from "@/content/site";
 import { Photo } from "./ui/Photo";
 import { Kicker, Lead, Lines, Title } from "./ui/Typography";
@@ -6,7 +7,7 @@ import styles from "./Space.module.css";
 export function Space() {
   return (
     <section id="space" className={styles.space} aria-labelledby="space-title">
-      <figure className={styles.figure}>
+      <figure className={styles.figure} data-reveal="image">
         <Photo
           src={space.photo.src}
           alt={space.photo.alt}
@@ -26,7 +27,7 @@ export function Space() {
 
       <ol className={styles.list}>
         {space.items.map((item, index) => (
-          <li key={item.title} className={styles.item}>
+          <li key={item.title} className={styles.item} data-reveal="up" style={{ "--i": index + 5 } as CSSProperties}>
             <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
             <div>
               <h3 className={styles.itemTitle}>{item.title}</h3>
@@ -36,7 +37,7 @@ export function Space() {
         ))}
       </ol>
 
-      <blockquote className={styles.quote}>«{space.quote}»</blockquote>
+      <blockquote className={styles.quote} data-reveal="fade" style={{ "--i": 8 } as CSSProperties}>«{space.quote}»</blockquote>
     </section>
   );
 }

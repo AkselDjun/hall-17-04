@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import { booking, bookingFormats, contacts } from "@/content/site";
 import {
   errorSummary,
@@ -26,17 +26,31 @@ type TextField = Exclude<BookingField, "format">;
 const EMPTY: Record<TextField, string> = { name: "", phone: "", date: "", guests: "" };
 const FOCUS_ORDER: TextField[] = ["name", "phone", "date"];
 
+const SHAKE: Keyframe[] = [
+  { transform: "translateX(0)" },
+  { transform: "translateX(-7px)" },
+  { transform: "translateX(6px)" },
+  { transform: "translateX(-4px)" },
+  { transform: "translateX(2px)" },
+  { transform: "translateX(0)" },
+];
+
 type FieldProps = {
   id: string;
   label: string;
+  order: number;
   error?: string;
   className?: string;
   children: ReactNode;
 };
 
-function Field({ id, label, error, className, children }: FieldProps) {
+function Field({ id, label, order, error, className, children }: FieldProps) {
   return (
-    <div className={cx(styles.field, error && styles.invalid, className)}>
+    <div
+      className={cx(styles.field, error && styles.invalid, className)}
+      data-reveal="up"
+      style={{ "--i": order, "--stagger": "70ms" } as CSSProperties}
+    >
       <label htmlFor={id}>{label}</label>
       {children}
       {error && (
@@ -110,6 +124,11 @@ export function BookingPanel() {
     const firstInvalid = FOCUS_ORDER.find((field) => found[field]);
     if (firstInvalid) {
       inputs.current[firstInvalid]?.focus();
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        FOCUS_ORDER.filter((field) => found[field]).forEach((field) =>
+          inputs.current[field]?.parentElement?.animate(SHAKE, { duration: 420, easing: "ease-out" }),
+        );
+      }
       return;
     }
 
@@ -141,7 +160,7 @@ export function BookingPanel() {
         <SuccessTicket data={sent} onReset={handleReset} />
       ) : (
         <form className={styles.form} onSubmit={handleSubmit} noValidate aria-label="Заявка на бронирование">
-          <Field id="booking-name" label="Имя" error={errors.name} className={styles.name}>
+          <Field id="booking-name" label="Имя" order={0} error={errors.name} className={styles.name}>
             <input
               ref={(node) => {
                 inputs.current.name = node;
@@ -159,7 +178,7 @@ export function BookingPanel() {
             />
           </Field>
 
-          <Field id="booking-phone" label="Телефон" error={errors.phone} className={styles.phone}>
+          <Field id="booking-phone" label="Телефон" order={1} error={errors.phone} className={styles.phone}>
             <input
               ref={(node) => {
                 inputs.current.phone = node;
@@ -180,7 +199,7 @@ export function BookingPanel() {
             />
           </Field>
 
-          <Field id="booking-date" label="Дата" error={errors.date}>
+          <Field id="booking-date" label="Дата" order={2} error={errors.date}>
             <input
               ref={(node) => {
                 inputs.current.date = node;
@@ -198,7 +217,7 @@ export function BookingPanel() {
             />
           </Field>
 
-          <Field id="booking-guests" label="Гостей">
+          <Field id="booking-guests" label="Гостей" order={3}>
             <input
               id="booking-guests"
               name="guests"
@@ -211,7 +230,7 @@ export function BookingPanel() {
             />
           </Field>
 
-          <Field id="booking-format" label="Формат" className={styles.format}>
+          <Field id="booking-format" label="Формат" order={4} className={styles.format}>
             <select
               id="booking-format"
               name="format"
@@ -240,8 +259,8 @@ export function BookingPanel() {
             </div>
           )}
 
-          <div className={styles.actions}>
-            <button type="submit" className={cx(button({ size: "lg" }), styles.submit)} disabled={sending}>
+          <div className={styles.actions} data-reveal="up" style={{ "--i": 5, "--stagger": "70ms" } as CSSProperties}>
+            <button type="submit" className={cx(button({ size: "lg" }), styles.submit, sending && styles.sending)} disabled={sending}>
               {sending ? (
                 <span className={styles.loading}>Отправляем</span>
               ) : status === "failed" ? (

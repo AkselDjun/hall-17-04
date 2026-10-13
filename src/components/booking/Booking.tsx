@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { booking, contacts } from "@/content/site";
 import { cx } from "@/lib/cx";
 import { button } from "../ui/button";
@@ -5,6 +6,8 @@ import { PinIcon } from "../ui/icons";
 import { Kicker, Lines, Title } from "../ui/Typography";
 import { BookingPanel } from "./BookingPanel";
 import styles from "./Booking.module.css";
+
+const order = (index: number) => ({ "--i": index }) as CSSProperties;
 
 export function Booking() {
   return (
@@ -19,17 +22,17 @@ export function Booking() {
 
       <aside className={styles.aside} aria-label="Контакты">
         <dl className={styles.contacts}>
-          <div>
+          <div data-reveal="left" style={order(0)}>
             <dt>Адрес</dt>
             <dd>{contacts.addressFull}</dd>
           </div>
-          <div>
+          <div data-reveal="left" style={order(1)}>
             <dt>Телефон</dt>
             <dd>
               <a href={contacts.phoneHref}>{contacts.phone}</a>
             </dd>
           </div>
-          <div>
+          <div data-reveal="left" style={order(2)}>
             <dt>Instagram</dt>
             <dd>
               <a href={contacts.instagram.url} target="_blank" rel="noopener noreferrer">
@@ -43,13 +46,13 @@ export function Booking() {
           </div>
         </dl>
 
-        <a href={contacts.map} target="_blank" rel="noopener noreferrer" className={styles.map}>
+        <a href={contacts.map} target="_blank" rel="noopener noreferrer" className={styles.map} data-reveal="up" style={order(3)}>
           <PinIcon size={36} className={styles.pin} />
           <span className={styles.mapLabel}>Карта · {contacts.street} ↗</span>
           <span className="visually-hidden">— открыть в Яндекс Картах</span>
         </a>
 
-        <div className={styles.buttons}>
+        <div className={styles.buttons} data-reveal="up" style={order(4)}>
           <a href={contacts.phoneHref} className={cx(button({ variant: "outline", size: "sm" }), styles.button)}>
             Позвонить
           </a>

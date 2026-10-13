@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { hero } from "@/content/site";
+import { Spotlight } from "./motion/Spotlight";
 import { Photo } from "./ui/Photo";
 import { button } from "./ui/button";
 import styles from "./Hero.module.css";
@@ -12,6 +13,16 @@ const frameSizes = (ratio: number) =>
   )}px, ${Math.round(FRAME_HEIGHTS.desktop * ratio)}px`;
 
 const frameNumber = (index: number) => String((index % hero.reel.length) + 1).padStart(2, "0");
+
+function Word({ children, index, accent }: { children: string; index: number; accent?: boolean }) {
+  return (
+    <span className={styles.word}>
+      <span className={styles.wordInner} style={{ "--w": index } as CSSProperties}>
+        {accent ? <em>{children}</em> : children}
+      </span>
+    </span>
+  );
+}
 
 export function Hero() {
   const frames = [...hero.reel, ...hero.reel];
@@ -54,8 +65,9 @@ export function Hero() {
 
       <div className={styles.content}>
         <h1 id="hero-title" className={styles.title}>
-          В главной <br className={styles.breakNarrow} />
-          роли —<br className={styles.breakWide} /> <em>вы.</em>
+          <Word index={0}>В</Word> <Word index={1}>главной</Word> <br className={styles.breakNarrow} />
+          <Word index={2}>роли</Word> <Word index={3}>—</Word>
+          <br className={styles.breakWide} /> <Word index={4} accent>вы.</Word>
         </h1>
         <div className={styles.side}>
           <p className={styles.lead}>{hero.lead}</p>
@@ -69,6 +81,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      <Spotlight />
     </section>
   );
 }

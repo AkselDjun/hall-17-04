@@ -40,9 +40,28 @@
     font-weight: 500;
   }
 
+  .bar.intro {
+    animation: barIn 0.8s var(--ease) 1.6s backwards;
+  }
+
   .hidden {
     transform: translateY(calc(100% + 24px));
     opacity: 0;
     pointer-events: none;
+  }
+}
+
+@keyframes barIn {
+  from {
+    opacity: 0;
+    transform: translateY(calc(100% + 24px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .bar.intro {
+    animation: none;
+    transition: none;
   }
 }

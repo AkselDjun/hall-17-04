@@ -96,11 +96,32 @@
 .bar {
   flex: 1;
   height: 2px;
+  overflow: hidden;
   background: rgb(237 233 226 / 0.35);
 }
 
-.barFilled {
+.barFill {
+  display: block;
+  height: 100%;
   background: var(--text);
+  transform-origin: left;
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .card:not([data-shown]) .barFill {
+    transform: scaleX(0);
+  }
+
+  .card[data-shown] .barFill {
+    animation: barFill 0.7s linear both;
+    animation-delay: calc(0.5s + var(--i, 0) * 90ms + var(--b) * 0.7s);
+  }
+}
+
+@keyframes barFill {
+  from {
+    transform: scaleX(0);
+  }
 }
 
 .expand {
@@ -198,6 +219,7 @@
   }
 
   .card {
+    --stagger: 0ms;
     flex: 0 0 200px;
     scroll-snap-align: start;
   }

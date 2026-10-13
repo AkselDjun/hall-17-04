@@ -113,6 +113,7 @@
   }
 
   .cell {
+    --stagger: 0ms;
     flex: 0 0 290px;
     scroll-snap-align: start;
   }

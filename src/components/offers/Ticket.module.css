@@ -5,6 +5,16 @@
   height: 100%;
   background: var(--paper);
   color: var(--ink);
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+
+@media (hover: hover) {
+  .ticket:hover {
+    transform: translateY(-6px) rotate(-0.4deg);
+    box-shadow: 0 24px 50px -24px rgb(0 0 0 / 0.9);
+  }
 }
 
 .gold {

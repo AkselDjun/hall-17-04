@@ -130,7 +130,9 @@ export function StoryViewer({ items, index, onChange }: StoryViewerProps) {
                 <small className={styles.tag}>
                   {String(index + 1).padStart(2, "0")} · {current.tag}
                 </small>
-                <p className={styles.quote}>«{current.quote}»</p>
+                <p key={current.src} className={styles.quote}>
+                  «{current.quote}»
+                </p>
               </div>
               <a href="#booking" className={button({ block: true })} onClick={close}>
                 Забронировать дату

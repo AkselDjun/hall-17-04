@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import type { Review } from "@/content/site";
-import { cx } from "@/lib/cx";
 import { Carousel } from "../ui/Carousel";
 import { ExpandIcon } from "../ui/icons";
 import { Photo } from "../ui/Photo";
@@ -24,7 +23,7 @@ export function ReviewStories({ items }: { items: Review[] }) {
         label="Отзывы гостей из Instagram-сторис"
       >
         {items.map((item, index) => (
-          <li key={item.src} className={styles.card}>
+          <li key={item.src} className={styles.card} data-reveal="up" style={{ "--i": index } as CSSProperties}>
             <figure className={styles.figure}>
               <button
                 type="button"
@@ -35,7 +34,9 @@ export function ReviewStories({ items }: { items: Review[] }) {
                 <Photo src={item.src} alt={item.alt} sizes="(max-width: 640px) 236px, (max-width: 1099px) 200px, 296px" />
                 <span className={styles.bars} aria-hidden="true">
                   {items.map((_, bar) => (
-                    <span key={bar} className={cx(styles.bar, bar <= index && styles.barFilled)} />
+                    <span key={bar} className={styles.bar}>
+                      {bar <= index && <span className={styles.barFill} style={{ "--b": bar } as CSSProperties} />}
+                    </span>
                   ))}
                 </span>
                 <span className={styles.expand} aria-hidden="true">

@@ -6,6 +6,7 @@ import { Formats } from "@/components/Formats";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
+import { RevealObserver } from "@/components/motion/RevealObserver";
 import { Offers } from "@/components/offers/Offers";
 import { Promo } from "@/components/Promo";
 import { Reviews } from "@/components/reviews/Reviews";
@@ -33,6 +34,7 @@ export default function Home() {
       <Footer />
       <ActionBar />
       <JsonLd />
+      <RevealObserver />
     </BookingProvider>
   );
 }

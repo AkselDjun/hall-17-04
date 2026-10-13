@@ -56,7 +56,10 @@
   background-size: 40px 40px;
   background-position: center;
   border: 1px solid transparent;
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.2s,
+    opacity 0.9s var(--ease) calc(var(--i, 0) * 90ms),
+    transform 0.9s var(--ease) calc(var(--i, 0) * 90ms);
 }
 
 .map:hover {
@@ -70,6 +73,37 @@
   color: var(--accent);
   transform: translate(-50%, -70%);
   transition: transform 0.3s var(--ease);
+}
+
+.map::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .map::before {
+    animation: ping 2.6s var(--ease) infinite;
+  }
+}
+
+@keyframes ping {
+  0% {
+    opacity: 0.8;
+    transform: translateY(6px) scale(0.6);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(6px) scale(5);
+  }
 }
 
 .map:hover .pin {

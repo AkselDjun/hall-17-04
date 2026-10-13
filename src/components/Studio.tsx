@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { contacts, studio } from "@/content/site";
 import { asset } from "@/lib/asset";
 import { cx } from "@/lib/cx";
 import { BookingLink } from "./booking/BookingContext";
+import { CountUp } from "./motion/CountUp";
 import { button } from "./ui/button";
 import { ExternalIcon } from "./ui/icons";
 import { Photo } from "./ui/Photo";
@@ -10,6 +12,9 @@ import { Kicker, Lead, Lines, Title } from "./ui/Typography";
 import styles from "./Studio.module.css";
 
 const LOGO = asset("/brand/photostudio-logo.svg");
+
+const order = (index: number) => ({ "--i": index }) as CSSProperties;
+const toNumber = (value: string) => Number.parseInt(value.replace(/\D/g, ""), 10);
 
 export function Studio() {
   const [first, second, third] = studio.gallery;
@@ -26,7 +31,7 @@ export function Studio() {
 
       <Lead className={styles.lead}>{studio.lead}</Lead>
 
-      <div className={styles.badge}>
+      <div className={styles.badge} data-reveal="up" style={order(5)}>
         <span className={styles.badgeValue}>{studio.badge.value}</span>
         <div className={styles.badgeText}>
           <span className={styles.badgeTitle}>{studio.badge.title}</span>
@@ -34,9 +39,11 @@ export function Studio() {
         </div>
       </div>
 
-      <BookingLink format="Фотостудия" className={cx(button({ variant: "outline", size: "sm" }), styles.cta)}>
-        {studio.cta}
-      </BookingLink>
+      <div className={styles.ctaWrap} data-reveal="up" style={order(6)}>
+        <BookingLink format="Фотостудия" className={cx(button({ variant: "outline", size: "sm" }), styles.cta)}>
+          {studio.cta}
+        </BookingLink>
+      </div>
 
       <a
         href={contacts.studioInstagram.url}
@@ -44,6 +51,8 @@ export function Studio() {
         rel="noopener noreferrer"
         className={styles.profile}
         aria-label={`${studio.profile.name} в Instagram`}
+        data-reveal="up"
+        style={order(7)}
       >
         <span className={styles.profileRow}>
           <span className={styles.avatar}>
@@ -55,10 +64,16 @@ export function Studio() {
             <span className={styles.profileName}>{studio.profile.name}</span>
             <span className={styles.profileStats}>
               <span>
-                <b>{studio.profile.posts}</b> публикаций
+                <b>
+                  <CountUp value={toNumber(studio.profile.posts)} />
+                </b>{" "}
+                публикаций
               </span>
               <span>
-                <b>{studio.profile.followers}</b> подписчик
+                <b>
+                  <CountUp value={toNumber(studio.profile.followers)} duration={2000} />
+                </b>{" "}
+                подписчик
               </span>
             </span>
           </span>
@@ -73,13 +88,13 @@ export function Studio() {
 
       <div className={styles.gallery}>
         <figure className={cx(styles.shot, styles.shotFirst)}>
-          <div className={styles.frame}>
+          <div className={styles.frame} data-reveal="image" style={order(0)}>
             <Photo src={first.src} alt={first.alt} sizes={gallerySizes} />
           </div>
           <figcaption>{first.caption}</figcaption>
         </figure>
         <figure className={cx(styles.shot, styles.shotSecond)}>
-          <div className={styles.frame}>
+          <div className={styles.frame} data-reveal="image" style={order(2)}>
             <Photo src={second.src} alt={second.alt} sizes={gallerySizes} />
           </div>
           <figcaption>{second.caption}</figcaption>
@@ -91,11 +106,13 @@ export function Studio() {
             rel="noopener noreferrer"
             className={styles.logo}
             aria-label="Photo studio 17.04 в Instagram"
+            data-reveal="fade"
+            style={order(3)}
           >
             <Image src={LOGO} alt="Photo studio 17.04" width={240} height={79} unoptimized />
           </a>
           <figure className={cx(styles.shot, styles.shotThird)}>
-            <div className={styles.frame}>
+            <div className={styles.frame} data-reveal="image" style={order(4)}>
               <Photo src={third.src} alt={third.alt} sizes={gallerySizes} />
             </div>
             <figcaption>{third.caption}</figcaption>

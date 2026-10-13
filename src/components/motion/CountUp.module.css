@@ -1,0 +1,13 @@
+.count {
+  display: inline-grid;
+  justify-items: end;
+}
+
+.reserve,
+.live {
+  grid-area: 1 / 1;
+}
+
+.reserve {
+  visibility: hidden;
+}

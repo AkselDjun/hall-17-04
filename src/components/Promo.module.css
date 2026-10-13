@@ -1,7 +1,7 @@
 .promo {
+  position: relative;
   min-height: 320px;
   padding: 40px var(--pad);
-  border-block: 1px solid var(--accent-line);
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   grid-template-areas: "value text cta";
@@ -9,8 +9,27 @@
   column-gap: 56px;
 }
 
+.promo::before,
+.promo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.promo::before {
+  top: 0;
+}
+
+.promo::after {
+  bottom: 0;
+}
+
 .value {
   grid-area: value;
+  text-shadow: 0 0 60px rgb(201 166 94 / 0.18);
   font-family: var(--serif);
   font-size: clamp(160px, 15.3vw, 220px);
   font-weight: 300;
@@ -43,6 +62,56 @@
 
 .promo .cta {
   grid-area: cta;
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .promo::before,
+  .promo::after {
+    transform: scaleX(0);
+    transition: transform 1.6s var(--ease);
+  }
+
+  .promo[data-shown]::before,
+  .promo[data-shown]::after {
+    transform: scaleX(1);
+  }
+
+  .promo[data-shown] .day {
+    animation: dayOn 1.2s var(--ease) both;
+    animation-delay: calc(0.6s + var(--d) * 0.16s);
+  }
+
+  .promo[data-shown] .value {
+    animation: glow 4.5s ease-in-out 1.6s infinite;
+  }
+}
+
+@keyframes dayOn {
+  0% {
+    opacity: 0.15;
+    color: var(--muted);
+  }
+
+  45% {
+    opacity: 1;
+    color: var(--accent);
+  }
+
+  100% {
+    opacity: 1;
+    color: var(--muted);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 60px rgb(201 166 94 / 0.18);
+  }
+
+  50% {
+    text-shadow: 0 0 90px rgb(201 166 94 / 0.42);
+  }
 }
 
 @media (max-width: 1099px) {

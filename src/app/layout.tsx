@@ -6,6 +6,7 @@ import "@fontsource-variable/manrope/wght.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
+import "./motion.css";
 import { meta, siteUrl } from "@/content/site";
 
 const indexable = process.env.NEXT_PUBLIC_INDEXABLE === "true";
