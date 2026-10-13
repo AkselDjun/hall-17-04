@@ -80,30 +80,16 @@
 }
 
 .frame img {
-  transition:
-    scale 1.8s var(--ease),
-    transform 0.8s var(--ease);
+  transition: transform 0.8s var(--ease);
 }
 
 .profile {
-  transition:
-    border-color 0.2s,
-    opacity 0.9s var(--ease),
-    transform 0.9s var(--ease);
-  transition-delay: 0s, calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms);
-}
-
-.avatar {
-  transition: transform 0.6s var(--ease);
+  transition: border-color 0.2s;
 }
 
 @media (hover: hover) {
   .frame:hover img {
     transform: scale(1.04);
-  }
-
-  .profile:hover .avatar {
-    transform: rotate(-8deg) scale(1.06);
   }
 }
 

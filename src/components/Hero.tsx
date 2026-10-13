@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import { hero } from "@/content/site";
-import { Spotlight } from "./motion/Spotlight";
 import { Photo } from "./ui/Photo";
 import { button } from "./ui/button";
 import styles from "./Hero.module.css";
@@ -81,7 +80,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <Spotlight />
     </section>
   );
 }

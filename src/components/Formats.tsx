@@ -26,7 +26,7 @@ export function Formats() {
       >
         {formats.items.map((item, index) => (
           <li key={item.title} className={styles.card} data-reveal="up" style={{ "--i": index } as CSSProperties}>
-            <div className={styles.poster} data-reveal="image" style={{ "--i": index } as CSSProperties}>
+            <div className={styles.poster}>
               <Photo
                 src={item.photo.src}
                 alt={item.photo.alt}
@@ -44,15 +44,11 @@ export function Formats() {
         ))}
       </Carousel>
 
-      <div className={styles.also}>
-        <span className={styles.alsoLabel} data-reveal="fade">
-          {formats.alsoLabel}
-        </span>
+      <div className={styles.also} data-reveal="up">
+        <span className={styles.alsoLabel}>{formats.alsoLabel}</span>
         <ul className={styles.chips}>
-          {formats.also.map((item, index) => (
-            <li key={item} data-reveal="up" style={{ "--i": index, "--stagger": "60ms" } as CSSProperties}>
-              {item}
-            </li>
+          {formats.also.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
       </div>

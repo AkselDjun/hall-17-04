@@ -7,8 +7,6 @@ import { Kicker, Lines, Title } from "../ui/Typography";
 import { BookingPanel } from "./BookingPanel";
 import styles from "./Booking.module.css";
 
-const order = (index: number) => ({ "--i": index }) as CSSProperties;
-
 export function Booking() {
   return (
     <section id="booking" className={styles.booking} aria-labelledby="booking-title">
@@ -20,19 +18,19 @@ export function Booking() {
         <BookingPanel />
       </div>
 
-      <aside className={styles.aside} aria-label="Контакты">
+      <aside className={styles.aside} aria-label="Контакты" data-reveal="up" style={{ "--i": 2 } as CSSProperties}>
         <dl className={styles.contacts}>
-          <div data-reveal="left" style={order(0)}>
+          <div>
             <dt>Адрес</dt>
             <dd>{contacts.addressFull}</dd>
           </div>
-          <div data-reveal="left" style={order(1)}>
+          <div>
             <dt>Телефон</dt>
             <dd>
               <a href={contacts.phoneHref}>{contacts.phone}</a>
             </dd>
           </div>
-          <div data-reveal="left" style={order(2)}>
+          <div>
             <dt>Instagram</dt>
             <dd>
               <a href={contacts.instagram.url} target="_blank" rel="noopener noreferrer">
@@ -46,13 +44,13 @@ export function Booking() {
           </div>
         </dl>
 
-        <a href={contacts.map} target="_blank" rel="noopener noreferrer" className={styles.map} data-reveal="up" style={order(3)}>
+        <a href={contacts.map} target="_blank" rel="noopener noreferrer" className={styles.map}>
           <PinIcon size={36} className={styles.pin} />
           <span className={styles.mapLabel}>Карта · {contacts.street} ↗</span>
           <span className="visually-hidden">— открыть в Яндекс Картах</span>
         </a>
 
-        <div className={styles.buttons} data-reveal="up" style={order(4)}>
+        <div className={styles.buttons}>
           <a href={contacts.phoneHref} className={cx(button({ variant: "outline", size: "sm" }), styles.button)}>
             Позвонить
           </a>

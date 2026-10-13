@@ -13,18 +13,18 @@ export function Tech() {
         <Lead className={styles.lead}>{tech.lead}</Lead>
       </div>
 
-      <dl className={styles.list}>
-        {tech.rows.map((row, index) => (
-          <div key={row.label} className={styles.row} data-reveal="left" style={{ "--i": index } as CSSProperties}>
+      <dl className={styles.list} data-reveal="up" style={{ "--i": 3 } as CSSProperties}>
+        {tech.rows.map((row) => (
+          <div key={row.label} className={styles.row}>
             <dt className={styles.label}>{row.label}</dt>
             <dd className={styles.value}>{row.value}</dd>
           </div>
         ))}
       </dl>
 
-      <div className={styles.media}>
-        {tech.photos.map((photo, index) => (
-          <div key={photo.src} className={styles.shot} data-reveal="image" style={{ "--i": index * 2 } as CSSProperties}>
+      <div className={styles.media} data-reveal="fade" style={{ "--i": 1 } as CSSProperties}>
+        {tech.photos.map((photo) => (
+          <div key={photo.src} className={styles.shot}>
             <Photo src={photo.src} alt={photo.alt} position={photo.position} sizes="(max-width: 1099px) 100vw, 520px" />
           </div>
         ))}

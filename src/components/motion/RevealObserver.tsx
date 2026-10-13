@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 
 const SELECTOR = "[data-reveal]:not([data-shown])";
-const CLIPPED = new Set(["type", "rise"]);
 
 export function RevealObserver() {
   useEffect(() => {
@@ -14,40 +13,25 @@ export function RevealObserver() {
       return;
     }
 
-    const targets = new Map<Element, Set<Element>>();
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          targets.get(entry.target)?.forEach(show);
-          targets.delete(entry.target);
+          show(entry.target);
           observer.unobserve(entry.target);
         }
       },
       { threshold: 0.15 },
     );
 
-    const watch = (element: Element) => {
-      const clipped = CLIPPED.has(element.getAttribute("data-reveal") ?? "");
-      const anchor = clipped && element.parentElement ? element.parentElement : element;
-      const group = targets.get(anchor);
-      if (group) {
-        group.add(element);
-        return;
-      }
-      targets.set(anchor, new Set([element]));
-      observer.observe(anchor);
-    };
-
-    const watchWithin = (root: ParentNode) => root.querySelectorAll(SELECTOR).forEach(watch);
+    const watchWithin = (root: ParentNode) => root.querySelectorAll(SELECTOR).forEach((element) => observer.observe(element));
     watchWithin(document);
 
     const mutations = new MutationObserver((records) => {
       for (const record of records) {
         record.addedNodes.forEach((node) => {
           if (!(node instanceof Element)) return;
-          if (node.matches(SELECTOR)) watch(node);
+          if (node.matches(SELECTOR)) observer.observe(node);
           watchWithin(node);
         });
       }

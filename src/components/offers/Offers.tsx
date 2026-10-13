@@ -28,7 +28,7 @@ export function Offers() {
           <li
             key={offer.title}
             className={cx(styles.cell, offer.wide && styles.wide)}
-            data-reveal="ticket"
+            data-reveal="up"
             style={{ "--i": index } as CSSProperties}
           >
             <Ticket offer={offer} number={index + 1} />

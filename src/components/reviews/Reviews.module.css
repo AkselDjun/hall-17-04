@@ -104,24 +104,6 @@
   display: block;
   height: 100%;
   background: var(--text);
-  transform-origin: left;
-}
-
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .card:not([data-shown]) .barFill {
-    transform: scaleX(0);
-  }
-
-  .card[data-shown] .barFill {
-    animation: barFill 0.7s linear both;
-    animation-delay: calc(0.5s + var(--i, 0) * 90ms + var(--b) * 0.7s);
-  }
-}
-
-@keyframes barFill {
-  from {
-    transform: scaleX(0);
-  }
 }
 
 .expand {
