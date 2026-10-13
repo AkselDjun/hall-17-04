@@ -85,9 +85,13 @@
 .word {
   display: inline-block;
   margin-bottom: -0.14em;
-  padding: 0 0.08em 0.14em 0;
+  padding-bottom: 0.14em;
   overflow: hidden;
   vertical-align: top;
+}
+
+.word:last-child {
+  padding-right: 0.08em;
 }
 
 .wordInner {

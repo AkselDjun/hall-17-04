@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import { booking, contacts } from "@/content/site";
 import { cx } from "@/lib/cx";
 import { button } from "../ui/button";
-import { PinIcon } from "../ui/icons";
 import { Kicker, Lines, Title } from "../ui/Typography";
 import { BookingPanel } from "./BookingPanel";
 import styles from "./Booking.module.css";
@@ -44,11 +43,21 @@ export function Booking() {
           </div>
         </dl>
 
-        <a href={contacts.map} target="_blank" rel="noopener noreferrer" className={styles.map}>
-          <PinIcon size={36} className={styles.pin} />
-          <span className={styles.mapLabel}>Карта · {contacts.street} ↗</span>
-          <span className="visually-hidden">— открыть в Яндекс Картах</span>
-        </a>
+        <figure className={styles.map}>
+          <iframe
+            src={contacts.mapWidget}
+            title={`Карта: HALL 17.04, ${contacts.addressFull}`}
+            className={styles.mapFrame}
+            loading="lazy"
+            allowFullScreen
+          />
+          <figcaption className={styles.mapCaption}>
+            <span>Карта · {contacts.street}</span>
+            <a href={contacts.map} target="_blank" rel="noopener noreferrer">
+              Открыть в Яндекс Картах ↗
+            </a>
+          </figcaption>
+        </figure>
 
         <div className={styles.buttons}>
           <a href={contacts.phoneHref} className={cx(button({ variant: "outline", size: "sm" }), styles.button)}>

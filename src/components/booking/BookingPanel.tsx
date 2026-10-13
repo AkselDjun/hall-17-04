@@ -127,9 +127,10 @@ export function BookingPanel() {
       return;
     }
 
+    const website = String(new FormData(event.currentTarget).get("website") ?? "");
     setStatus("sending");
     try {
-      await sendBooking(data);
+      await sendBooking(data, website);
       setSent(data);
       setStatus("sent");
     } catch {
@@ -238,6 +239,10 @@ export function BookingPanel() {
               ))}
             </select>
           </Field>
+
+          <div className={styles.honeypot} aria-hidden="true">
+            <input name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
+          </div>
 
           {status === "failed" && (
             <div className={styles.banner} role="alert">

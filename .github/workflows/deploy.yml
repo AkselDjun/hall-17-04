@@ -29,6 +29,11 @@ jobs:
 
       - run: npm run typecheck
 
+      - uses: actions/cache@v6
+        with:
+          path: public/images
+          key: images-${{ hashFiles('assets/photos/**', 'scripts/build-images.mjs') }}
+
       - name: Resolve site address
         run: |
           repo="${GITHUB_REPOSITORY#*/}"
@@ -39,7 +44,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          NEXT_PUBLIC_BOOKING_ENDPOINT: ${{ vars.BOOKING_ENDPOINT }}
+          NEXT_PUBLIC_BOOKING_DEMO: true
           NEXT_PUBLIC_INDEXABLE: ${{ vars.INDEXABLE }}
 
       - name: Publish to gh-pages

@@ -86,10 +86,3 @@ export const CheckIcon = (props: IconProps) => (
     <path d="M5 12.5l4.5 4.5L19 7.5" />
   </Icon>
 );
-
-export const PinIcon = ({ size = 36, ...rest }: IconProps) => (
-  <svg width={size} height={(size * 48) / 36} viewBox="0 0 36 48" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true" focusable="false" {...rest}>
-    <path d="M18 46C18 46 33 29 33 17A15 15 0 1 0 3 17C3 29 18 46 18 46Z" />
-    <circle cx="18" cy="17" r="5" />
-  </svg>
-);

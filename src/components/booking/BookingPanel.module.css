@@ -145,6 +145,14 @@
   grid-column: span 2;
 }
 
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .banner {
   grid-column: 1 / -1;
   display: grid;

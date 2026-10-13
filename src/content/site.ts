@@ -17,6 +17,7 @@ export const contacts = {
   direct: "https://ig.me/m/hall_17.04",
   reviewsHighlight: "https://www.instagram.com/stories/highlights/18063433931367008/",
   map: `https://yandex.by/maps/?text=${encodeURIComponent("Барановичи, улица Ленина, 12")}`,
+  mapWidget: `https://yandex.by/map-widget/v1/?text=${encodeURIComponent("Барановичи, улица Ленина, 12")}&z=17`,
 };
 
 export const nav = [

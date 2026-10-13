@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export type BookingData = {
   name: string;
   phone: string;
@@ -63,24 +65,28 @@ export function errorSummary(count: number) {
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function sendBooking(data: BookingData) {
-  const endpoint = process.env.NEXT_PUBLIC_BOOKING_ENDPOINT;
-  const forceError = new URLSearchParams(window.location.search).has("error");
+const DEMO = process.env.NEXT_PUBLIC_BOOKING_DEMO === "true" || process.env.NODE_ENV === "development";
+const ENDPOINT = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/contact.php`;
 
-  if (forceError || !navigator.onLine) {
+export async function sendBooking(data: BookingData, website: string) {
+  if (DEMO) {
     await wait(SIMULATED_DELAY_MS);
-    throw new Error("Booking request failed");
-  }
-
-  if (!endpoint) {
-    await wait(SIMULATED_DELAY_MS);
+    if (new URLSearchParams(window.location.search).has("error") || !navigator.onLine) {
+      throw new Error("Booking request failed");
+    }
     return;
   }
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ ...data, phone: `+${phoneDigits(data.phone)}`, source: window.location.href }),
-  });
-  if (!response.ok) throw new Error(`Booking request failed with ${response.status}`);
+  await axios.post(
+    ENDPOINT,
+    {
+      name: data.name.trim(),
+      phone: `+${phoneDigits(data.phone)}`,
+      date: data.date,
+      guests: data.guests,
+      format: data.format,
+      website,
+    },
+    { timeout: 15000 },
+  );
 }

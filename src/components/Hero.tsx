@@ -53,7 +53,7 @@ export function Hero() {
                   alt={copy ? "" : frame.alt}
                   sizes={frameSizes(frame.ratio)}
                   position={frame.position}
-                  preload={index < 3}
+                  preload={index < 2}
                 />
                 <figcaption>Кадр {frameNumber(index)}</figcaption>
               </figure>

@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   images: {
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
-    deviceSizes: [480, 960, 1600],
+    deviceSizes: [320, 480, 640, 960, 1280, 1600],
     imageSizes: [],
   },
 };
