@@ -1,0 +1,7 @@
+.photo {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}

@@ -1,0 +1,80 @@
+.ticker {
+  --gap: 36px;
+  --dot: 7px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: roll 40s linear infinite;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 0 var(--gap) 0 0;
+  list-style: none;
+}
+
+.group li {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.dot {
+  width: var(--dot);
+  height: var(--dot);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@keyframes roll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1099px) {
+  .ticker {
+    --gap: 26px;
+    --dot: 6px;
+    height: 88px;
+    font-size: 34px;
+  }
+
+  .track {
+    animation-duration: 31s;
+  }
+}
+
+@media (max-width: 640px) {
+  .ticker {
+    --gap: 18px;
+    --dot: 5px;
+    height: 64px;
+    font-size: 26px;
+  }
+
+  .track {
+    animation-duration: 23s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

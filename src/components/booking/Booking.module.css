@@ -1,0 +1,214 @@
+.booking {
+  --notch: var(--bg-raised);
+  padding: 100px var(--pad);
+  background: var(--bg-raised);
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr);
+  column-gap: clamp(48px, 7vw, 100px);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 36px;
+}
+
+.contacts > div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.contacts > div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.contacts dt {
+  padding-top: 3px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contacts dd {
+  font-size: 17px;
+}
+
+.map {
+  position: relative;
+  display: block;
+  height: 260px;
+  background-color: var(--surface-2);
+  background-image:
+    linear-gradient(#26241f 1px, transparent 1px),
+    linear-gradient(90deg, #26241f 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.map:hover {
+  border-color: var(--accent-line);
+}
+
+.pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--accent);
+  transform: translate(-50%, -70%);
+  transition: transform 0.3s var(--ease);
+}
+
+.map:hover .pin {
+  transform: translate(-50%, -80%);
+}
+
+.mapLabel {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.buttons .button {
+  flex: 1;
+  height: 52px;
+  padding: 0 12px;
+}
+
+@media (max-width: 1099px) {
+  .booking {
+    --notch: var(--bg);
+    padding: 80px var(--pad);
+    background: none;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .main {
+    gap: 24px;
+  }
+
+  .title {
+    margin-top: -8px;
+  }
+
+  .aside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-areas:
+      "contacts map"
+      "buttons map";
+    align-items: start;
+    gap: 20px 28px;
+    margin-top: 44px;
+    padding-top: 0;
+  }
+
+  .contacts {
+    grid-area: contacts;
+  }
+
+  .contacts > div {
+    grid-template-columns: 110px minmax(0, 1fr);
+    padding: 14px 0;
+  }
+
+  .contacts dt {
+    font-size: 11px;
+  }
+
+  .contacts dd {
+    font-size: 16px;
+  }
+
+  .map {
+    grid-area: map;
+    height: 100%;
+    min-height: 180px;
+    background-size: 36px 36px;
+  }
+
+  .mapLabel {
+    left: 14px;
+    bottom: 12px;
+    font-size: 10px;
+  }
+
+  .buttons {
+    grid-area: buttons;
+  }
+
+  .buttons .button {
+    height: 48px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .booking {
+    padding: 56px var(--pad);
+  }
+
+  .main {
+    gap: 20px;
+  }
+
+  .title {
+    margin-top: 0;
+  }
+
+  .aside {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .contacts > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+  }
+
+  .contacts dt {
+    font-size: 10px;
+  }
+
+  .contacts dd {
+    font-size: 15px;
+    text-align: right;
+  }
+
+  .map {
+    height: 180px;
+    background-size: 32px 32px;
+  }
+
+  .buttons {
+    display: none;
+  }
+}

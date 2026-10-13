@@ -1,0 +1,276 @@
+.reviews {
+  padding: 100px var(--pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  grid-template-areas:
+    "heading lead"
+    "heading link"
+    "strip strip";
+  align-items: end;
+  column-gap: 40px;
+}
+
+.heading {
+  grid-area: heading;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lead {
+  grid-area: lead;
+}
+
+.link {
+  grid-area: link;
+  justify-self: start;
+  margin-top: 18px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.strip {
+  grid-area: strip;
+  margin: 48px calc(-1 * var(--pad)) 0;
+}
+
+.track {
+  --hole: var(--line-strong);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0;
+  padding: 26px var(--pad) 30px;
+  list-style: none;
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(90deg, transparent 10px, var(--hole) 10px 24px, transparent 24px),
+    linear-gradient(90deg, transparent 10px, var(--hole) 10px 24px, transparent 24px);
+  background-size: 34px 12px;
+  background-repeat: repeat-x;
+  background-position:
+    0 7px,
+    0 calc(100% - 7px);
+}
+
+.reviews .pager {
+  display: none;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.story {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.story img {
+  transition: transform 0.8s var(--ease);
+}
+
+.bars {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  gap: 3px;
+  height: 36px;
+  padding: 12px 12px 0;
+  background: linear-gradient(rgb(11 11 10 / 0.5), rgb(11 11 10 / 0));
+}
+
+.bar {
+  flex: 1;
+  height: 2px;
+  background: rgb(237 233 226 / 0.35);
+}
+
+.barFilled {
+  background: var(--text);
+}
+
+.expand {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgb(11 11 10 / 0.72);
+  color: var(--text);
+  transition: background-color 0.2s;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.quote {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+@media (hover: hover) {
+  .story:hover img {
+    transform: scale(1.04);
+  }
+
+  .story:hover .expand {
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+@media (max-width: 1099px) {
+  .reviews {
+    padding: 64px var(--pad);
+    grid-template-columns: minmax(0, 1fr) 280px;
+    column-gap: 32px;
+  }
+
+  .heading {
+    gap: 18px;
+  }
+
+  .lead {
+    font-size: 15px;
+  }
+
+  .link {
+    margin-top: 14px;
+    font-size: 11px;
+  }
+
+  .strip {
+    margin-top: 28px;
+  }
+
+  .track {
+    display: flex;
+    gap: 20px;
+    padding: 22px var(--pad) 26px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+    background-attachment: local;
+    background-image:
+      linear-gradient(90deg, transparent 9px, var(--hole) 9px 21px, transparent 21px),
+      linear-gradient(90deg, transparent 9px, var(--hole) 9px 21px, transparent 21px);
+    background-size: 31px 10px;
+    background-position:
+      0 6px,
+      0 calc(100% - 6px);
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 200px;
+    scroll-snap-align: start;
+  }
+
+  .bars {
+    height: 30px;
+    padding: 10px 10px 0;
+  }
+
+  .expand {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .tag {
+    font-size: 10px;
+  }
+
+  .quote {
+    font-size: 20px;
+  }
+
+  .reviews .pager {
+    display: flex;
+    margin-top: 28px;
+    padding-inline: var(--pad);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews {
+    padding: 56px var(--pad);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "heading"
+      "lead"
+      "strip"
+      "link";
+  }
+
+  .heading {
+    gap: 20px;
+  }
+
+  .lead {
+    margin-top: 20px;
+  }
+
+  .strip {
+    margin-top: 24px;
+  }
+
+  .track {
+    gap: 14px;
+    padding: 18px var(--pad) 22px;
+    background-image:
+      linear-gradient(90deg, transparent 8px, var(--hole) 8px 18px, transparent 18px),
+      linear-gradient(90deg, transparent 8px, var(--hole) 8px 18px, transparent 18px);
+    background-size: 28px 9px;
+    background-position:
+      0 4px,
+      0 calc(100% - 4px);
+  }
+
+  .card {
+    flex-basis: 236px;
+  }
+
+  .reviews .pager {
+    margin-top: 20px;
+  }
+
+  .link {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,103 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    opacity 0.2s;
+}
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.8;
+}
+
+.md {
+  height: 56px;
+  padding: 0 28px;
+}
+
+.sm {
+  height: 48px;
+  padding: 0 22px;
+}
+
+.lg {
+  height: 60px;
+  padding: 0 40px;
+  letter-spacing: 0.14em;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.solid {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.solid:hover {
+  background: var(--accent-hover);
+  color: var(--bg);
+}
+
+.outline {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.accentOutline {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.accentOutline:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.dark {
+  background: var(--bg);
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.dark:hover {
+  background: #26241f;
+  color: var(--text);
+}
+
+@media (max-width: 1099px) {
+  .lg {
+    height: 58px;
+    padding: 0 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lg {
+    height: 56px;
+  }
+}

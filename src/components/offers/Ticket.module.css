@@ -1,0 +1,232 @@
+.ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(150px, 13.2vw, 190px);
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.gold {
+  --paper: var(--accent);
+  --ink: var(--bg);
+  --ink-soft: var(--bg);
+  --perf: rgb(11 11 10 / 0.35);
+}
+
+.cream {
+  --paper: var(--text);
+  --ink: var(--bg);
+  --ink-soft: #3a3632;
+  --perf: rgb(11 11 10 / 0.3);
+}
+
+.dark {
+  --paper: var(--surface-2);
+  --ink: var(--text);
+  --ink-soft: var(--text-soft);
+  --perf: rgb(237 233 226 / 0.3);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 28px 26px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.meta span:not(:last-child)::after {
+  content: "·";
+  margin-inline: 0.6em;
+}
+
+.title {
+  margin-top: 2px;
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.price {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-style: italic;
+}
+
+.features {
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.features li {
+  display: inline;
+}
+
+.features li + li::before {
+  content: " · ";
+}
+
+.stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 22px 26px;
+}
+
+.perforation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 2px dashed var(--perf);
+}
+
+.perforation::before,
+.perforation::after {
+  content: "";
+  position: absolute;
+  left: -13px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--notch, var(--bg));
+}
+
+.perforation::before {
+  top: -12px;
+}
+
+.perforation::after {
+  bottom: -12px;
+}
+
+.seat {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.ticket .cta {
+  height: 48px;
+  padding: 0 12px;
+}
+
+@media (max-width: 1099px) {
+  .dark {
+    --paper: var(--surface-3);
+  }
+
+  .title {
+    font-size: 34px;
+  }
+}
+
+@container (max-width: 540px) {
+  .ticket {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .body,
+  .stub {
+    display: contents;
+  }
+
+  .meta {
+    order: 1;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 22px 24px 0;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .meta span:not(:last-child)::after {
+    content: none;
+  }
+
+  .title {
+    order: 2;
+    margin: 10px 24px 0;
+    font-size: 32px;
+  }
+
+  .price {
+    order: 3;
+    margin: 10px 24px 22px;
+    font-size: 21px;
+  }
+
+  .perforation {
+    order: 4;
+    position: relative;
+    margin: 0 16px;
+    border-top: 2px dashed var(--perf);
+    border-left: 0;
+  }
+
+  .perforation::before,
+  .perforation::after {
+    top: -11px;
+    bottom: auto;
+    width: 20px;
+    height: 20px;
+  }
+
+  .perforation::before {
+    left: -26px;
+  }
+
+  .perforation::after {
+    left: auto;
+    right: -26px;
+  }
+
+  .features {
+    order: 5;
+    flex-grow: 1;
+    padding: 18px 24px 0 42px;
+    list-style: disc;
+  }
+
+  .features li {
+    display: list-item;
+  }
+
+  .features li + li {
+    margin-top: 6px;
+  }
+
+  .features li + li::before {
+    content: none;
+  }
+
+  .seat {
+    display: none;
+  }
+
+  .ticket .cta {
+    order: 6;
+    width: auto;
+    margin: 20px 24px 22px;
+  }
+}

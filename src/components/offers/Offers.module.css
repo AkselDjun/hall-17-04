@@ -1,0 +1,125 @@
+.offers {
+  --notch: var(--bg);
+  padding: 100px var(--pad);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lead {
+  flex: 0 1 420px;
+}
+
+.carousel {
+  margin-top: 48px;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cell {
+  container-type: inline-size;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.offers .pager {
+  display: none;
+}
+
+@media (max-width: 1099px) {
+  .offers {
+    --notch: var(--bg-raised);
+    padding: 72px var(--pad);
+    background: var(--bg-raised);
+  }
+
+  .head {
+    gap: 32px;
+  }
+
+  .heading {
+    gap: 18px;
+  }
+
+  .lead {
+    flex-basis: 280px;
+    font-size: 15px;
+  }
+
+  .carousel {
+    margin-top: 32px;
+  }
+
+  .track {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .offers {
+    padding: 56px var(--pad);
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .heading {
+    gap: 20px;
+  }
+
+  .lead {
+    flex: none;
+  }
+
+  .carousel {
+    margin: 24px calc(-1 * var(--pad)) 0;
+  }
+
+  .track {
+    display: flex;
+    gap: 14px;
+    padding-inline: var(--pad);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cell {
+    flex: 0 0 290px;
+    scroll-snap-align: start;
+  }
+
+  .offers .pager {
+    display: flex;
+    margin-top: 24px;
+    padding-inline: var(--pad);
+  }
+}

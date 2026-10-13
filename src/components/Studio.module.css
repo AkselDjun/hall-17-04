@@ -1,0 +1,399 @@
+.studio {
+  padding: 100px var(--pad);
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  grid-template-rows: repeat(5, auto) 1fr;
+  grid-template-areas:
+    "heading gallery"
+    "lead gallery"
+    "badge gallery"
+    "cta gallery"
+    "profile gallery"
+    ". gallery";
+  column-gap: 60px;
+  row-gap: 24px;
+}
+
+.heading {
+  grid-area: heading;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 20px;
+}
+
+.lead {
+  grid-area: lead;
+}
+
+.badge {
+  grid-area: badge;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  border: 1px solid var(--accent);
+  background: var(--surface);
+}
+
+.badgeValue {
+  font-family: var(--serif);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 0.8;
+  font-variant-numeric: lining-nums;
+  color: var(--accent);
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.badgeTitle {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.badgeNote {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.studio .cta {
+  grid-area: cta;
+  justify-self: start;
+  height: 52px;
+  padding: 0 24px;
+}
+
+.profile {
+  grid-area: profile;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.profile:hover {
+  border-color: var(--accent-line);
+  color: inherit;
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.avatarInner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a4947 0%, #262523 70%);
+}
+
+.avatarLogo {
+  width: 47px;
+  height: 16px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+  min-width: 0;
+}
+
+.profileName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.profileStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.profileStats b {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.profileIcon {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.profileBio {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.gallery {
+  grid-area: gallery;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas: "first second column";
+  align-items: start;
+  gap: 20px;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shot figcaption {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 253 / 340;
+  background: var(--surface);
+}
+
+.shotFirst {
+  grid-area: first;
+}
+
+.shotSecond {
+  grid-area: second;
+  margin-top: 60px;
+}
+
+.column {
+  grid-area: column;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+}
+
+.logo {
+  display: block;
+  width: min(240px, 100%);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1099px) {
+  .studio {
+    padding: 80px var(--pad);
+    background: var(--bg-raised);
+    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-rows: none;
+    grid-template-areas:
+      "heading lead"
+      "heading badge"
+      "profile cta"
+      "gallery gallery";
+    align-items: start;
+    column-gap: 36px;
+    row-gap: 16px;
+  }
+
+  .heading {
+    gap: 18px;
+    padding-top: 0;
+  }
+
+  .lead {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .badge {
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .badgeValue {
+    font-size: 56px;
+  }
+
+  .badgeTitle {
+    font-size: 22px;
+  }
+
+  .badgeNote {
+    font-size: 10px;
+  }
+
+  .studio .cta {
+    justify-self: stretch;
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .profile {
+    padding: 16px 18px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .avatarLogo {
+    width: 41px;
+    height: 14px;
+  }
+
+  .profileName {
+    font-size: 15px;
+  }
+
+  .profileStats,
+  .profileBio {
+    font-size: 13px;
+  }
+
+  .gallery {
+    margin-top: 12px;
+    gap: 16px;
+  }
+
+  .shot {
+    gap: 10px;
+  }
+
+  .shot figcaption {
+    font-size: 11px;
+  }
+
+  .frame {
+    aspect-ratio: 219 / 230;
+  }
+
+  .shotSecond {
+    margin-top: 40px;
+  }
+
+  .column {
+    gap: 21px;
+  }
+
+  .logo {
+    width: min(180px, 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .studio {
+    padding: 56px var(--pad);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "heading"
+      "lead"
+      "badge"
+      "gallery"
+      "cta"
+      "profile";
+    row-gap: 20px;
+  }
+
+  .heading {
+    gap: 20px;
+  }
+
+  .lead {
+    font-size: 15px;
+  }
+
+  .badge {
+    gap: 16px;
+    padding: 14px 18px;
+  }
+
+  .badgeValue {
+    font-size: 60px;
+  }
+
+  .badgeTitle {
+    font-size: 24px;
+  }
+
+  .studio .cta {
+    height: 52px;
+    font-size: 13px;
+  }
+
+  .profile {
+    padding: 16px;
+  }
+
+  .gallery {
+    margin-top: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "first logo"
+      "first second";
+    gap: 16px 10px;
+  }
+
+  .column {
+    display: contents;
+  }
+
+  .logo {
+    grid-area: logo;
+    width: 150px;
+  }
+
+  .shotFirst {
+    align-self: start;
+  }
+
+  .shotSecond {
+    margin-top: 0;
+  }
+
+  .shotThird,
+  .shot figcaption {
+    display: none;
+  }
+
+  .frame {
+    aspect-ratio: 170 / 230;
+  }
+}

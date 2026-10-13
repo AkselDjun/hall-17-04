@@ -1,0 +1,36 @@
+{
+  "name": "hall-17-04",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт HALL 17.04 — пространство для событий в Барановичах",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "images": "node scripts/build-images.mjs",
+    "predev": "npm run images",
+    "dev": "next dev",
+    "prebuild": "npm run images",
+    "build": "next build",
+    "preview": "npx --yes serve@14 out",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/cormorant-garamond": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.0",
+    "sharp": "0.35.5",
+    "typescript": "5.9.3"
+  }
+}

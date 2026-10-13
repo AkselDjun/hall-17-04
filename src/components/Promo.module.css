@@ -1,0 +1,114 @@
+.promo {
+  min-height: 320px;
+  padding: 40px var(--pad);
+  border-block: 1px solid var(--accent-line);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "value text cta";
+  align-items: center;
+  column-gap: 56px;
+}
+
+.value {
+  grid-area: value;
+  font-family: var(--serif);
+  font-size: clamp(160px, 15.3vw, 220px);
+  font-weight: 300;
+  line-height: 0.8;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.text {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.days {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.promo .cta {
+  grid-area: cta;
+}
+
+@media (max-width: 1099px) {
+  .promo {
+    min-height: 0;
+    padding: 56px var(--pad);
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "value text"
+      "value cta";
+    column-gap: 36px;
+    row-gap: 14px;
+  }
+
+  .value {
+    font-size: 170px;
+  }
+
+  .text {
+    align-self: end;
+    gap: 14px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .days {
+    font-size: 11px;
+  }
+
+  .promo .cta {
+    align-self: start;
+    justify-self: start;
+    height: 50px;
+    padding: 0 22px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .promo {
+    padding: 48px var(--pad);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "value"
+      "text"
+      "cta";
+  }
+
+  .value {
+    font-size: 128px;
+    line-height: 0.85;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .days {
+    font-size: 10px;
+  }
+
+  .promo .cta {
+    justify-self: stretch;
+    height: 52px;
+    margin-top: 10px;
+  }
+}
