@@ -7,6 +7,7 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
 import "./motion.css";
+import { RevealObserver } from "@/components/motion/RevealObserver";
 import { meta, siteUrl } from "@/content/site";
 
 const indexable = process.env.NEXT_PUBLIC_INDEXABLE === "true";
@@ -38,7 +39,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        {children}
+        <RevealObserver />
+      </body>
     </html>
   );
 }

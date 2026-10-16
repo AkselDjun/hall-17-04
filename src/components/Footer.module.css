@@ -35,6 +35,14 @@
   display: none;
 }
 
+.legal a {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.legal span {
+  color: var(--text-soft);
+}
+
 @media (max-width: 1099px) {
   .footer {
     min-height: 0;
@@ -80,5 +88,9 @@
 
   .end {
     display: none;
+  }
+
+  .footer.plain {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
   }
 }

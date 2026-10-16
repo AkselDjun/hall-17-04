@@ -9,7 +9,7 @@ export type BookingData = {
 };
 
 export type BookingField = keyof BookingData;
-export type BookingErrors = Partial<Record<BookingField, string>>;
+export type BookingErrors = Partial<Record<BookingField | "consent", string>>;
 
 const COUNTRY_CODE = "375";
 const PHONE_LENGTH = 12;
@@ -48,7 +48,7 @@ export function formatGuests(value: string) {
   return value.replace(/\D/g, "").slice(0, 4);
 }
 
-export function validateBooking(data: BookingData): BookingErrors {
+export function validateBooking(data: BookingData, consent: boolean): BookingErrors {
   const errors: BookingErrors = {};
   if (!data.name.trim()) errors.name = "Введите имя";
   const digits = phoneDigits(data.phone);
@@ -56,6 +56,7 @@ export function validateBooking(data: BookingData): BookingErrors {
     errors.phone = digits.length > COUNTRY_CODE.length ? "Нужно 9 цифр после +375" : "Введите телефон";
   }
   if (data.date && !/^\d{2}\.\d{2}(\.\d{4})?$/.test(data.date)) errors.date = "Формат: дд.мм.гггг";
+  if (!consent) errors.consent = "Без согласия мы не можем принять заявку";
   return errors;
 }
 
@@ -85,6 +86,7 @@ export async function sendBooking(data: BookingData, website: string) {
       date: data.date,
       guests: data.guests,
       format: data.format,
+      consent: true,
       website,
     },
     { timeout: 15000 },

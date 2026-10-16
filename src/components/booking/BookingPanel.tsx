@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import { booking, bookingFormats, contacts } from "@/content/site";
 import {
@@ -68,7 +69,9 @@ export function BookingPanel() {
   const [errors, setErrors] = useState<BookingErrors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [sent, setSent] = useState<BookingData | null>(null);
+  const [consent, setConsent] = useState(false);
   const inputs = useRef<Partial<Record<TextField, HTMLInputElement | null>>>({});
+  const consentRef = useRef<HTMLInputElement>(null);
   const resetFocus = useRef(false);
 
   useEffect(() => {
@@ -114,15 +117,16 @@ export function BookingPanel() {
     if (sending) return;
 
     const data: BookingData = { ...values, name: values.name.trim(), format };
-    const found = validateBooking(data);
+    const found = validateBooking(data, consent);
     setErrors(found);
-    const firstInvalid = FOCUS_ORDER.find((field) => found[field]);
-    if (firstInvalid) {
-      inputs.current[firstInvalid]?.focus();
+    if (Object.keys(found).length > 0) {
+      const firstInvalid = FOCUS_ORDER.find((field) => found[field]);
+      if (firstInvalid) inputs.current[firstInvalid]?.focus();
+      else consentRef.current?.focus();
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        FOCUS_ORDER.filter((field) => found[field]).forEach((field) =>
-          inputs.current[field]?.parentElement?.animate(SHAKE, { duration: 420, easing: "ease-out" }),
-        );
+        const shaken = FOCUS_ORDER.filter((field) => found[field]).map((field) => inputs.current[field]?.parentElement);
+        if (found.consent) shaken.push(consentRef.current?.closest("label"));
+        shaken.forEach((element) => element?.animate(SHAKE, { duration: 420, easing: "ease-out" }));
       }
       return;
     }
@@ -138,8 +142,20 @@ export function BookingPanel() {
     }
   };
 
+  const handleConsent = (event: ChangeEvent<HTMLInputElement>) => {
+    setConsent(event.target.checked);
+    if (event.target.checked && errors.consent) {
+      setErrors((current) => {
+        const next = { ...current };
+        delete next.consent;
+        return next;
+      });
+    }
+  };
+
   const handleReset = () => {
     setValues(EMPTY);
+    setConsent(false);
     setErrors({});
     setSent(null);
     resetFocus.current = true;
@@ -239,6 +255,31 @@ export function BookingPanel() {
               ))}
             </select>
           </Field>
+
+          <div className={cx(styles.consent, errors.consent && styles.invalid)}>
+            <label>
+              <input
+                ref={consentRef}
+                type="checkbox"
+                name="consent"
+                checked={consent}
+                disabled={sending}
+                onChange={handleConsent}
+                aria-invalid={errors.consent ? true : undefined}
+                aria-describedby={errors.consent ? "booking-consent-error" : undefined}
+              />
+              <span className={styles.box} aria-hidden="true" />
+              <span>
+                Согласен(на) на обработку моих данных для ответа на заявку, в том числе на их передачу в Telegram, по{" "}
+                <Link href="/privacy/">политике конфиденциальности</Link>
+              </span>
+            </label>
+            {errors.consent && (
+              <span id="booking-consent-error" className={styles.error} role="alert">
+                {errors.consent}
+              </span>
+            )}
+          </div>
 
           <div className={styles.honeypot} aria-hidden="true">
             <input name="website" tabIndex={-1} autoComplete="off" defaultValue="" />

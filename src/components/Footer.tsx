@@ -1,9 +1,11 @@
+import Link from "next/link";
 import { contacts, footer } from "@/content/site";
+import { cx } from "@/lib/cx";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+export function Footer({ current }: { current?: "privacy" }) {
   return (
-    <footer className={styles.footer}>
+    <footer className={cx(styles.footer, current && styles.plain)}>
       <p className={styles.mark} aria-hidden="true" data-reveal="fade">
         HALL 17.04
       </p>
@@ -20,6 +22,13 @@ export function Footer() {
           <a href={contacts.studioInstagram.url} target="_blank" rel="noopener noreferrer">
             {contacts.studioInstagram.handle}
           </a>
+        </p>
+        <p className={styles.legal}>
+          {current === "privacy" ? (
+            <span aria-current="page">Политика конфиденциальности</span>
+          ) : (
+            <Link href="/privacy/">Политика конфиденциальности</Link>
+          )}
         </p>
         <p className={styles.end}>{footer.end}</p>
       </div>

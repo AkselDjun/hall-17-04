@@ -55,6 +55,7 @@ $name = trim((string) ($input['name'] ?? ''));
 $date = trim((string) ($input['date'] ?? ''));
 $guests = trim((string) ($input['guests'] ?? ''));
 $format = trim((string) ($input['format'] ?? ''));
+$consent = ($input['consent'] ?? false) === true;
 $digits = preg_replace('/\D/', '', (string) ($input['phone'] ?? ''));
 
 if (preg_match('/^375\d{9}$/', $digits)) {
@@ -67,7 +68,8 @@ if (preg_match('/^375\d{9}$/', $digits)) {
     $phone = null;
 }
 
-$valid = $name !== ''
+$valid = $consent
+    && $name !== ''
     && mb_strlen($name) <= 100
     && $phone !== null
     && ($date === '' || preg_match('/^\d{2}\.\d{2}(\.\d{4})?$/', $date))
@@ -103,6 +105,7 @@ $text = implode("\n", [
     'Дата: ' . ($date !== '' ? $date : '—'),
     'Гостей: ' . ($guests !== '' ? $guests : '—'),
     'Формат: ' . ($format !== '' ? $format : '—'),
+    'Согласие на обработку данных: получено',
 ]);
 
 $ch = curl_init('https://api.telegram.org/bot' . $config['token'] . '/sendMessage');

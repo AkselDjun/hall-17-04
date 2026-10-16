@@ -6,7 +6,6 @@ import { Formats } from "@/components/Formats";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
-import { RevealObserver } from "@/components/motion/RevealObserver";
 import { Offers } from "@/components/offers/Offers";
 import { Promo } from "@/components/Promo";
 import { Reviews } from "@/components/reviews/Reviews";
@@ -14,6 +13,7 @@ import { Space } from "@/components/Space";
 import { Studio } from "@/components/Studio";
 import { Tech } from "@/components/Tech";
 import { Ticker } from "@/components/Ticker";
+import { venueSchema } from "@/lib/schema";
 
 export default function Home() {
   return (
@@ -33,8 +33,7 @@ export default function Home() {
       </main>
       <Footer />
       <ActionBar />
-      <JsonLd />
-      <RevealObserver />
+      <JsonLd data={venueSchema} />
     </BookingProvider>
   );
 }

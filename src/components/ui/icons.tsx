@@ -86,3 +86,10 @@ export const CheckIcon = (props: IconProps) => (
     <path d="M5 12.5l4.5 4.5L19 7.5" />
   </Icon>
 );
+
+export const InfoIcon = (props: IconProps) => (
+  <Icon strokeWidth={1.7} {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 11v5.5M12 7.5v.5" />
+  </Icon>
+);
