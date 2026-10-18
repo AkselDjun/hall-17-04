@@ -7,6 +7,7 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
 import "./motion.css";
+import { ConsentProvider } from "@/components/consent/Consent";
 import { RevealObserver } from "@/components/motion/RevealObserver";
 import { meta, siteUrl } from "@/content/site";
 
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
       <body>
-        {children}
+        <ConsentProvider>{children}</ConsentProvider>
         <RevealObserver />
       </body>
     </html>

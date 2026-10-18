@@ -11,10 +11,8 @@ import styles from "./Studio.module.css";
 
 const LOGO = asset("/brand/photostudio-logo.svg");
 
-
 export function Studio() {
-  const [first, second, third] = studio.gallery;
-  const gallerySizes = "(max-width: 640px) 50vw, (max-width: 1099px) 33vw, 260px";
+  const { photo } = studio;
 
   return (
     <section id="studio" className={styles.studio} aria-labelledby="studio-title">
@@ -75,35 +73,21 @@ export function Studio() {
       </a>
 
       <div className={styles.gallery} data-reveal="up">
-        <figure className={cx(styles.shot, styles.shotFirst)}>
+        <a
+          href={contacts.studioInstagram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.logo}
+          aria-label="Photo studio 17.04 в Instagram"
+        >
+          <Image src={LOGO} alt="Photo studio 17.04" width={240} height={79} unoptimized />
+        </a>
+        <figure className={styles.shot}>
           <div className={styles.frame}>
-            <Photo src={first.src} alt={first.alt} sizes={gallerySizes} />
+            <Photo src={photo.src} alt={photo.alt} sizes="(max-width: 640px) 100vw, (max-width: 1099px) 50vw, 480px" />
           </div>
-          <figcaption>{first.caption}</figcaption>
+          <figcaption>{photo.caption}</figcaption>
         </figure>
-        <figure className={cx(styles.shot, styles.shotSecond)}>
-          <div className={styles.frame}>
-            <Photo src={second.src} alt={second.alt} sizes={gallerySizes} />
-          </div>
-          <figcaption>{second.caption}</figcaption>
-        </figure>
-        <div className={styles.column}>
-          <a
-            href={contacts.studioInstagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.logo}
-            aria-label="Photo studio 17.04 в Instagram"
-          >
-            <Image src={LOGO} alt="Photo studio 17.04" width={240} height={79} unoptimized />
-          </a>
-          <figure className={cx(styles.shot, styles.shotThird)}>
-            <div className={styles.frame}>
-              <Photo src={third.src} alt={third.alt} sizes={gallerySizes} />
-            </div>
-            <figcaption>{third.caption}</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
   );

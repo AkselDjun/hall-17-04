@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { contacts } from "@/content/site";
 import { cx } from "@/lib/cx";
+import { useConsent } from "./consent/Consent";
 import { ChatIcon, PhoneIcon } from "./ui/icons";
 import styles from "./ActionBar.module.css";
 
 export function ActionBar() {
   const [hidden, setHidden] = useState(false);
+  const { bannerOpen } = useConsent();
 
   useEffect(() => {
     const target = document.getElementById("booking");
@@ -18,7 +20,7 @@ export function ActionBar() {
   }, []);
 
   return (
-    <nav className={cx(styles.bar, styles.intro, hidden && styles.hidden)} aria-label="Быстрые действия">
+    <nav className={cx(styles.bar, styles.intro, (hidden || bannerOpen) && styles.hidden)} aria-label="Быстрые действия">
       <a href={contacts.phoneHref}>
         <PhoneIcon size={16} />
         Звонок

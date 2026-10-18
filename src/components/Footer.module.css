@@ -35,8 +35,37 @@
   display: none;
 }
 
-.legal a {
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
+.legal a,
+.cookie {
   border-bottom: 1px solid var(--line-soft);
+}
+
+.cookie {
+  padding: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.legal a:hover,
+.cookie:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
 }
 
 .legal span {

@@ -4,6 +4,7 @@ import { cx } from "@/lib/cx";
 import { button } from "../ui/button";
 import { Kicker, Lines, Title } from "../ui/Typography";
 import { BookingPanel } from "./BookingPanel";
+import { MapEmbed } from "./MapEmbed";
 import styles from "./Booking.module.css";
 
 export function Booking() {
@@ -44,13 +45,7 @@ export function Booking() {
         </dl>
 
         <figure className={styles.map}>
-          <iframe
-            src={contacts.mapWidget}
-            title={`Карта: HALL 17.04, ${contacts.addressFull}`}
-            className={styles.mapFrame}
-            loading="lazy"
-            allowFullScreen
-          />
+          <MapEmbed src={contacts.mapWidget} title={`Карта: HALL 17.04, ${contacts.addressFull}`} />
           <figcaption className={styles.mapCaption}>
             <span>Карта · {contacts.street}</span>
             <a href={contacts.map} target="_blank" rel="noopener noreferrer">

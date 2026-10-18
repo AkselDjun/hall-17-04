@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { contacts, footer } from "@/content/site";
 import { cx } from "@/lib/cx";
+import { CookieSettingsButton } from "./consent/Consent";
 import styles from "./Footer.module.css";
 
 export function Footer({ current }: { current?: "privacy" }) {
@@ -29,6 +30,7 @@ export function Footer({ current }: { current?: "privacy" }) {
           ) : (
             <Link href="/privacy/">Политика конфиденциальности</Link>
           )}
+          <CookieSettingsButton className={styles.cookie} />
         </p>
         <p className={styles.end}>{footer.end}</p>
       </div>

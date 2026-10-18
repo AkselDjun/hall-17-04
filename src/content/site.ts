@@ -1,5 +1,7 @@
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://akseldjun.github.io/hall-17-04").replace(/\/$/, "");
 
+export const metrikaId = process.env.NEXT_PUBLIC_METRIKA_ID ?? "";
+
 export const meta = {
   title: "HALL 17.04 — пространство для событий в Барановичах",
   description:
@@ -152,7 +154,7 @@ export const studio = {
   title: ["Фотостудия", "в соседнем кадре"],
   lead: "HALL 17.04 вырос из Photo studio 17.04. Студия — в этом же пространстве: портреты перед праздником, семейная съёмка или контент для бренда.",
   badge: { value: "1", title: "час съёмки бесплатно", note: "При бронировании HALL 17.04" },
-  cta: "Забронировать студию",
+  cta: "Забронировать дату",
   profile: {
     name: "Фотостудия Барановичи",
     posts: "779",
@@ -160,11 +162,7 @@ export const studio = {
     bio: "Зал №1 — интерьерный, №2 — циклорама.",
     rent: "@rent.1704",
   },
-  gallery: [
-    { src: "studio-light", alt: "Портрет со студийным светом", caption: "Профессиональный свет" },
-    { src: "studio-props", alt: "Съёмка с гитарой в ванне", caption: "Реквизит и ванна" },
-    { src: "studio-portrait", alt: "Портрет с букетом ромашек", caption: "Портреты и семья" },
-  ],
+  photo: { src: "studio-portrait", alt: "Портрет с букетом ромашек", caption: "Портреты и семья" },
 };
 
 export type Review = { src: string; alt: string; tag: string; quote: string };

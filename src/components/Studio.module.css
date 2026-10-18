@@ -184,10 +184,9 @@
 .gallery {
   grid-area: gallery;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-areas: "first second column";
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
   align-items: start;
-  gap: 20px;
+  gap: 40px;
 }
 
 .shot {
@@ -206,28 +205,14 @@
 
 .frame {
   position: relative;
-  aspect-ratio: 253 / 340;
+  aspect-ratio: 3 / 4;
   background: var(--surface);
-}
-
-.shotFirst {
-  grid-area: first;
-}
-
-.shotSecond {
-  grid-area: second;
-  margin-top: 60px;
-}
-
-.column {
-  grid-area: column;
-  display: flex;
-  flex-direction: column;
-  gap: 41px;
 }
 
 .logo {
   display: block;
+  align-self: center;
+  justify-self: center;
   width: min(240px, 100%);
 }
 
@@ -309,8 +294,9 @@
   }
 
   .gallery {
+    grid-template-columns: minmax(0, 1fr) 280px;
     margin-top: 12px;
-    gap: 16px;
+    gap: 36px;
   }
 
   .shot {
@@ -321,20 +307,8 @@
     font-size: 11px;
   }
 
-  .frame {
-    aspect-ratio: 219 / 230;
-  }
-
-  .shotSecond {
-    margin-top: 40px;
-  }
-
-  .column {
-    gap: 21px;
-  }
-
   .logo {
-    width: min(180px, 100%);
+    width: min(220px, 100%);
   }
 }
 
@@ -383,37 +357,17 @@
   }
 
   .gallery {
+    grid-template-columns: minmax(0, 1fr);
     margin-top: 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "first logo"
-      "first second";
-    gap: 16px 10px;
-  }
-
-  .column {
-    display: contents;
+    gap: 20px;
   }
 
   .logo {
-    grid-area: logo;
+    justify-self: start;
     width: 150px;
   }
 
-  .shotFirst {
-    align-self: start;
-  }
-
-  .shotSecond {
-    margin-top: 0;
-  }
-
-  .shotThird,
-  .shot figcaption {
-    display: none;
-  }
-
   .frame {
-    aspect-ratio: 170 / 230;
+    aspect-ratio: 4 / 5;
   }
 }

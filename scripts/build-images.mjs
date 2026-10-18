@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { access, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -41,6 +41,7 @@ await mkdir(OUTPUT_DIR, { recursive: true });
 
 const previous = await readManifest();
 const manifest = {};
+const keep = new Set();
 const sources = (await readdir(SOURCE_DIR)).filter((file) => /\.(jpe?g|png)$/i.test(file)).sort();
 let encoded = 0;
 
@@ -54,6 +55,7 @@ for (const file of sources) {
   const height = rotated ? sourceWidth : sourceHeight;
   const widths = variantWidths(width);
   const outputs = widths.flatMap((size) => Object.keys(FORMATS).map((format) => path.join(OUTPUT_DIR, `${name}-${size}.${format}`)));
+  for (const file of outputs) keep.add(path.basename(file));
   const cached = previous[name];
   const fresh = cached?.hash === hash && (await Promise.all(outputs.map(exists))).every(Boolean);
 
@@ -75,5 +77,8 @@ for (const file of sources) {
   };
 }
 
+const stale = (await readdir(OUTPUT_DIR)).filter((file) => !keep.has(file));
+await Promise.all(stale.map((file) => rm(path.join(OUTPUT_DIR, file))));
+
 await writeFile(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`images: ${sources.length} sources, ${encoded} files encoded`);
+console.log(`images: ${sources.length} sources, ${encoded} files encoded, ${stale.length} removed`);

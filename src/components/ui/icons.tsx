@@ -93,3 +93,10 @@ export const InfoIcon = (props: IconProps) => (
     <path d="M12 11v5.5M12 7.5v.5" />
   </Icon>
 );
+
+export const CookieIcon = (props: IconProps) => (
+  <Icon strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M12 3a9 9 0 1 0 9 9 3 3 0 0 1-3.6-2.9A3 3 0 0 1 14.1 6 3 3 0 0 1 12 3Z" />
+    <path d="M8.5 10h.01M15.5 15.5h.01M10.5 15.5h.01M12.5 11.5h.01" strokeWidth={2.4} />
+  </Icon>
+);
