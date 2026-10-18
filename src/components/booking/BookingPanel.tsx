@@ -271,7 +271,9 @@ export function BookingPanel() {
               <span className={styles.box} aria-hidden="true" />
               <span>
                 Согласен(на) на обработку моих данных для ответа на заявку, в том числе на их передачу в Telegram, по{" "}
-                <Link href="/privacy/">политике конфиденциальности</Link>
+                <Link href="/privacy/" prefetch={false}>
+                политике конфиденциальности
+              </Link>
               </span>
             </label>
             {errors.consent && (

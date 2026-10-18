@@ -142,7 +142,7 @@
   padding-top: 2px;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 .toc ol a:hover {
@@ -420,7 +420,7 @@
   }
 
   .toc ol .tocActive span {
-    color: var(--faint);
+    color: var(--muted);
   }
 
   .ask {

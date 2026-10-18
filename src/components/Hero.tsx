@@ -64,6 +64,7 @@ export function Hero() {
 
       <div className={styles.content}>
         <h1 id="hero-title" className={styles.title}>
+          <span className={styles.eyebrow}>{hero.eyebrow}</span>
           <Word index={0}>В</Word> <Word index={1}>главной</Word> <br className={styles.breakNarrow} />
           <Word index={2}>роли</Word> <Word index={3}>—</Word>
           <br className={styles.breakWide} /> <Word index={4} accent>вы.</Word>

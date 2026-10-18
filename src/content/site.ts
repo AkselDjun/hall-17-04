@@ -3,15 +3,18 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://akseldjun.g
 export const metrikaId = process.env.NEXT_PUBLIC_METRIKA_ID ?? "";
 
 export const meta = {
-  title: "HALL 17.04 — пространство для событий в Барановичах",
+  title: "Банкетный зал в Барановичах: свадьбы, юбилеи, дни рождения — HALL 17.04",
   description:
-    "Зал для свадеб, юбилеев и дней рождения в Барановичах: сцена, свет, LED-экран и банкет на 55 гостей. Праздники под ключ и фотостудия в том же пространстве.",
+    "Банкетный зал HALL 17.04 в Барановичах, ул. Ленина, 12: банкет до 55 гостей, сцена, свет и LED-экран. Свадьбы, юбилеи и дни рождения под ключ или аренда зала.",
 };
 
 export const contacts = {
   city: "Барановичи",
   street: "ул. Ленина, 12",
   addressFull: "г. Барановичи, ул. Ленина, 12",
+  region: "Брестская область",
+  postalCode: "225409",
+  geo: { latitude: 53.13239, longitude: 26.025818 },
   phone: "+375 29 240 12 67",
   phoneHref: "tel:+375292401267",
   instagram: { handle: "@hall_17.04", url: "https://www.instagram.com/hall_17.04/" },
@@ -33,7 +36,8 @@ export type ReelFrame = { src: string; alt: string; ratio: number; position: str
 
 export const hero = {
   kicker: ["HALL 17.04 представляет", "Барановичи", contacts.street],
-  lead: "Пространство для событий в Барановичах: зал со сценой, светом и LED-экраном, площадка для мастер-классов. Дни рождения и свадьбы — под ключ.",
+  eyebrow: "Банкетный зал в Барановичах",
+  lead: "Пространство для событий в Барановичах: зал на 55 гостей со сценой, светом и LED-экраном, площадка для мастер-классов. Дни рождения и свадьбы — под ключ.",
   reel: [
     { src: "reel-01", alt: "Гости поднимают бокалы за молодожёнов", ratio: 3 / 4, position: "50% 60%" },
     { src: "reel-02", alt: "Гостья с бокалом в тёплом свете люстры", ratio: 1, position: "50% 50%" },
@@ -88,7 +92,7 @@ export const bookingFormats = [
 export type BookingFormat = (typeof bookingFormats)[number];
 
 export const formats = {
-  kicker: "Сцена 02 — Форматы",
+  kicker: "Сцена 02 — Форматы праздников",
   title: "В программе сезона",
   lead: "Под ключ — значит, зал, декор, свет и проверенные подрядчики собраны в одном месте. Вам остаётся прийти и быть в кадре.",
   items: [
@@ -96,21 +100,21 @@ export const formats = {
       genre: "Жанр: мелодрама",
       title: "Свадьба под ключ",
       text: "Ваш идеальный день — в наших руках: от welcome-зоны до первого танца в дыму.",
-      photo: { src: "format-wedding", alt: "Первый танец жениха и невесты", position: "50% 50%" },
+      photo: { src: "format-wedding", alt: "Первый танец жениха и невесты на свадьбе в HALL 17.04", position: "50% 50%" },
       format: "Свадьба под ключ",
     },
     {
       genre: "Жанр: комедия",
       title: "День рождения под ключ",
       text: "Взрослые и детские, тематические и камерные. Торт, неон и горка бокалов — по вашему сценарию.",
-      photo: { src: "format-birthday", alt: "Именинница с букетом роз у экрана Happy Birthday", position: "50% 45%" },
+      photo: { src: "format-birthday", alt: "Именинница с букетом роз у LED-экрана с надписью Happy Birthday", position: "50% 45%" },
       format: "День рождения",
     },
     {
       genre: "Жанр: экшн",
       title: "Корпоратив и Новый год",
       text: "Шоу-программа, Дед Мороз и Снегурочка, ваша заставка на LED-экране.",
-      photo: { src: "format-corporate", alt: "Команда на корпоративе", position: "50% 50%" },
+      photo: { src: "format-corporate", alt: "Команда на корпоративе в банкетном зале HALL 17.04", position: "50% 50%" },
       format: "Корпоратив",
     },
     {
@@ -126,7 +130,7 @@ export const formats = {
 };
 
 export const tech = {
-  kicker: "Сцена 03 — Техника",
+  kicker: "Сцена 03 — Свет, звук и экран",
   title: "Свет, камера, мотор",
   lead: "Свет, звук, экран и спецэффекты уже в зале — не нужно искать отдельного подрядчика.",
   rows: [
@@ -162,13 +166,13 @@ export const studio = {
     bio: "Зал №1 — интерьерный, №2 — циклорама.",
     rent: "@rent.1704",
   },
-  photo: { src: "studio-portrait", alt: "Портрет с букетом ромашек", caption: "Портреты и семья" },
+  photo: { src: "studio-portrait", alt: "Портрет с букетом ромашек в фотостудии 17.04", caption: "Портреты и семья" },
 };
 
 export type Review = { src: string; alt: string; tag: string; quote: string };
 
 export const reviews = {
-  kicker: "Сцена 05 — Рецензии",
+  kicker: "Сцена 05 — Отзывы",
   title: "Рецензии гостей",
   lead: "Живые отзывы из наших сторис — без правок. Нажмите на кадр, чтобы прочитать целиком.",
   link: "Все отзывы в Instagram →",
@@ -192,7 +196,7 @@ export type Offer = {
 
 export const offers = {
   kicker: "Сцена 06 — Стоимость",
-  title: "Предложения",
+  title: "Цены и предложения",
   lead: "Цены — ориентир. Точный расчёт — после короткой встречи в зале.",
   items: [
     {

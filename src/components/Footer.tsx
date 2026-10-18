@@ -13,7 +13,7 @@ export function Footer({ current }: { current?: "privacy" }) {
       <div className={styles.bottom}>
         <p>
           {footer.copyright}
-          <span className={styles.tagline}> · {footer.tagline}</span> · {contacts.city}
+          <span className={styles.tagline}> · {footer.tagline}</span> · {contacts.city}, {contacts.street}
         </p>
         <p className={styles.social}>
           <a href={contacts.instagram.url} target="_blank" rel="noopener noreferrer">
@@ -28,7 +28,9 @@ export function Footer({ current }: { current?: "privacy" }) {
           {current === "privacy" ? (
             <span aria-current="page">Политика конфиденциальности</span>
           ) : (
-            <Link href="/privacy/">Политика конфиденциальности</Link>
+            <Link href="/privacy/" prefetch={false}>
+              Политика конфиденциальности
+            </Link>
           )}
           <CookieSettingsButton className={styles.cookie} />
         </p>

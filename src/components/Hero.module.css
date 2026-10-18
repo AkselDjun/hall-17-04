@@ -82,6 +82,19 @@
   white-space: nowrap;
 }
 
+.eyebrow {
+  display: block;
+  margin-bottom: 22px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: normal;
+  color: var(--accent);
+}
+
 .word {
   display: inline-block;
   margin-bottom: -0.14em;
@@ -255,6 +268,12 @@
     font-size: 60px;
   }
 
+  .eyebrow {
+    margin-bottom: 16px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
   .breakNarrow {
     display: inline;
   }
@@ -287,6 +306,10 @@
 
   .reel {
     animation: reelIn 1.2s var(--ease) both;
+  }
+
+  .eyebrow {
+    animation: fadeIn 0.8s ease 0.35s both;
   }
 
   .wordInner {

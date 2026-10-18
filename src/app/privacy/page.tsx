@@ -7,14 +7,10 @@ import styles from "@/components/policy/Policy.module.css";
 import { CheckIcon, InfoIcon } from "@/components/ui/icons";
 import { operator, policy, policySections, policySummary, type PolicyBlock } from "@/content/policy";
 import { contacts, siteUrl } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: `${policy.title} — HALL 17.04`,
-  description: policy.lead,
-  alternates: { canonical: "./" },
-  openGraph: { title: `${policy.title} — HALL 17.04`, description: policy.lead, url: "./" },
-};
+export const metadata: Metadata = pageMetadata(`${policy.title} — HALL 17.04`, `${policy.lead}.`);
 
 const host = siteUrl.replace(/^https?:\/\//, "");
 

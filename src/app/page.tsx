@@ -13,7 +13,7 @@ import { Space } from "@/components/Space";
 import { Studio } from "@/components/Studio";
 import { Tech } from "@/components/Tech";
 import { Ticker } from "@/components/Ticker";
-import { venueSchema } from "@/lib/schema";
+import { homeSchema } from "@/lib/schema";
 
 export default function Home() {
   return (
@@ -33,7 +33,7 @@ export default function Home() {
       </main>
       <Footer />
       <ActionBar />
-      <JsonLd data={venueSchema} />
+      <JsonLd data={homeSchema} />
     </BookingProvider>
   );
 }

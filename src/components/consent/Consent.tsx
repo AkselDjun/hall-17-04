@@ -100,7 +100,9 @@ function Banner({ onAccept, onReject, onCustomize }: { onAccept: () => void; onR
       </p>
       <p className={styles.text}>
         Необходимые cookie запоминают ваш выбор. {ANALYTICS ? "Карту Яндекса и аналитику" : "Карту Яндекса"} включим только с вашего
-        согласия. Подробнее — в <Link href="/privacy/">политике конфиденциальности</Link>.
+        согласия. Подробнее — в <Link href="/privacy/" prefetch={false}>
+          политике конфиденциальности
+        </Link>.
       </p>
       <div className={styles.actions}>
         <button type="button" className={cx(button({ size: "sm" }), styles.action)} onClick={onAccept}>
