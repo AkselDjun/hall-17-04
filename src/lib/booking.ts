@@ -1,4 +1,5 @@
 import axios from "axios";
+import { bookingEndpoint } from "@/content/site";
 
 export type BookingData = {
   name: string;
@@ -66,8 +67,8 @@ export function errorSummary(count: number) {
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const DEMO = process.env.NEXT_PUBLIC_BOOKING_DEMO === "true" || process.env.NODE_ENV === "development";
-const ENDPOINT = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/contact.php`;
+const DEMO = !bookingEndpoint && (process.env.NEXT_PUBLIC_BOOKING_DEMO === "true" || process.env.NODE_ENV === "development");
+const ENDPOINT = bookingEndpoint || `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/contact.php`;
 
 export async function sendBooking(data: BookingData, website: string) {
   if (DEMO) {

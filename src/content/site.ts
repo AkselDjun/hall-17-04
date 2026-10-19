@@ -2,6 +2,8 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://akseldjun.g
 
 export const metrikaId = process.env.NEXT_PUBLIC_METRIKA_ID ?? "";
 
+export const bookingEndpoint = process.env.NEXT_PUBLIC_BOOKING_ENDPOINT ?? "";
+
 export const operator = {
   name: "ИП Романовская Евгения Юрьевна",
   short: "ИП Романовская Е. Ю.",

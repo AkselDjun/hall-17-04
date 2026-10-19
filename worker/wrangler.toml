@@ -1,0 +1,16 @@
+name = "hall-17-04-booking"
+main = "src/index.js"
+compatibility_date = "2026-09-15"
+workers_dev = true
+preview_urls = false
+
+[vars]
+ALLOWED_ORIGINS = "https://akseldjun.github.io"
+
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1704"
+
+  [ratelimits.simple]
+  limit = 5
+  period = 60

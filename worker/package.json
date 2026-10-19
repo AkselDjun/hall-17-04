@@ -1,0 +1,14 @@
+{
+  "name": "hall-17-04-booking",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Принимает заявки с сайта HALL 17.04 и пересылает их в Telegram",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.146.0"
+  }
+}

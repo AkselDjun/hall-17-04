@@ -8,3 +8,5 @@ next-env.d.ts
 .DS_Store
 npm-debug.log*
 telegram-config.php
+.wrangler/
+.dev.vars
