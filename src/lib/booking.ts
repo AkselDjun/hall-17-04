@@ -1,4 +1,5 @@
 import axios from "axios";
+import { parseInputDate, startOfDay } from "./calendar";
 
 export type BookingData = {
   name: string;
@@ -55,7 +56,13 @@ export function validateBooking(data: BookingData, consent: boolean): BookingErr
   if (digits.length !== PHONE_LENGTH) {
     errors.phone = digits.length > COUNTRY_CODE.length ? "Нужно 9 цифр после +375" : "Введите телефон";
   }
-  if (data.date && !/^\d{2}\.\d{2}(\.\d{4})?$/.test(data.date)) errors.date = "Формат: дд.мм.гггг";
+  if (data.date) {
+    const today = startOfDay(new Date());
+    const parsed = parseInputDate(data.date, today);
+    if (!/^\d{2}\.\d{2}(\.\d{4})?$/.test(data.date)) errors.date = "Формат: дд.мм.гггг";
+    else if (!parsed) errors.date = "Такой даты нет";
+    else if (parsed < today) errors.date = "Эта дата уже прошла";
+  }
   if (!consent) errors.consent = "Без согласия мы не можем принять заявку";
   return errors;
 }

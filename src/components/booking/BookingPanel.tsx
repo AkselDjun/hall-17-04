@@ -18,6 +18,7 @@ import { cx } from "@/lib/cx";
 import { button } from "../ui/button";
 import { AlertIcon, RetryIcon } from "../ui/icons";
 import { useBooking } from "./BookingContext";
+import { DateInput } from "./DateInput";
 import { SuccessTicket } from "./SuccessTicket";
 import styles from "./BookingPanel.module.css";
 
@@ -212,20 +213,15 @@ export function BookingPanel() {
           </Field>
 
           <Field id="booking-date" label="Дата" error={errors.date}>
-            <input
-              ref={(node) => {
+            <DateInput
+              id="booking-date"
+              value={values.date}
+              onChange={(value) => setField("date", formatDate(value))}
+              inputRef={(node) => {
                 inputs.current.date = node;
               }}
-              id="booking-date"
-              name="date"
-              type="text"
-              inputMode="numeric"
-              placeholder="дд.мм.гггг"
-              className={styles.control}
-              value={values.date}
-              onChange={(event) => setField("date", formatDate(event.target.value))}
-              aria-invalid={errors.date ? true : undefined}
-              aria-describedby={describe("date")}
+              invalid={!!errors.date}
+              describedBy={describe("date")}
             />
           </Field>
 

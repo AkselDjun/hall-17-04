@@ -100,3 +100,9 @@ export const CookieIcon = (props: IconProps) => (
     <path d="M8.5 10h.01M15.5 15.5h.01M10.5 15.5h.01M12.5 11.5h.01" strokeWidth={2.4} />
   </Icon>
 );
+
+export const CalendarIcon = (props: IconProps) => (
+  <Icon {...props}>
+    <path d="M3.5 5.5h17v15h-17zM3.5 10h17M8 3v4.5M16 3v4.5" />
+  </Icon>
+);
