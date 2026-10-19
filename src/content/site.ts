@@ -2,6 +2,14 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://akseldjun.g
 
 export const metrikaId = process.env.NEXT_PUBLIC_METRIKA_ID ?? "";
 
+export const operator = {
+  name: "ИП Романовская Евгения Юрьевна",
+  short: "ИП Романовская Е. Ю.",
+  unp: "291809464",
+  address: "г. Барановичи, пл. Ленина, 1-115",
+  email: "sapy-zhenya@yandex.ru",
+};
+
 export const meta = {
   title: "Банкетный зал в Барановичах: свадьбы, юбилеи, дни рождения — HALL 17.04",
   description:

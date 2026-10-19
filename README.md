@@ -146,7 +146,6 @@ GitHub Pages раздаёт сайт из этой ветки (Settings → Page
 
 - [ ] Вписать цены в `offers.items`
 - [ ] Создать Telegram-бота и положить `telegram-config.php` на хостинг
-- [ ] Вписать данные оператора в `operator` в `src/content/policy.ts`: ФИО или название, УНП, e-mail
 - [ ] Подключить свой домен и задать `NEXT_PUBLIC_SITE_URL`
 - [ ] Если нужна аналитика, создать счётчик Яндекс Метрики и задать `NEXT_PUBLIC_METRIKA_ID`
 - [ ] Добавить сайт в Яндекс Вебмастер и Google Search Console, отправить `sitemap.xml`, в Вебмастере указать регион «Барановичи»

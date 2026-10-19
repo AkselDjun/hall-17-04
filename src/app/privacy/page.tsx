@@ -17,7 +17,7 @@ const host = siteUrl.replace(/^https?:\/\//, "");
 const fill = (html: string) =>
   html
     .replaceAll("{{phone}}", `<a class="nw" href="${contacts.phoneHref}">${contacts.phone}</a>`)
-    .replaceAll("{{email}}", operator.email.startsWith("[") ? operator.email : `<a href="mailto:${operator.email}">${operator.email}</a>`)
+    .replaceAll("{{email}}", `<a href="mailto:${operator.email}">${operator.email}</a>`)
     .replaceAll("{{instagram}}", `<a href="${contacts.instagram.url}" target="_blank" rel="noopener noreferrer">${contacts.instagram.handle}</a>`)
     .replaceAll("{{host}}", `<a href="${siteUrl}/">${host}</a>`)
     .replaceAll("{{address}}", contacts.addressFull);

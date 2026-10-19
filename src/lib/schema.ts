@@ -1,5 +1,5 @@
 import photos from "@/content/photos.json";
-import { contacts, meta, offers, siteUrl } from "@/content/site";
+import { contacts, meta, offers, operator, siteUrl } from "@/content/site";
 
 const catalog = photos as Record<string, { widths: number[] }>;
 const venueId = `${siteUrl}/#venue`;
@@ -60,6 +60,8 @@ export const homeSchema = {
       "@type": ["EventVenue", "LocalBusiness"],
       "@id": venueId,
       name: "HALL 17.04",
+      legalName: operator.name,
+      taxID: operator.unp,
       description: meta.description,
       slogan: "В главной роли — вы.",
       url: `${siteUrl}/`,
