@@ -21,8 +21,9 @@ const amenities = [
 ];
 
 const services = offers.items.map((item) => {
-  const min = amount(item.price);
+  const value = amount(item.price);
   const hourly = item.price.includes("час");
+  const from = item.price.trim().startsWith("от");
   return {
     "@type": "Offer",
     itemOffered: {
@@ -31,10 +32,10 @@ const services = offers.items.map((item) => {
       description: `${item.features.join(". ")}.`,
       areaServed: { "@type": "City", name: contacts.city },
     },
-    ...(min && {
+    ...(value && {
       priceSpecification: {
         "@type": hourly ? "UnitPriceSpecification" : "PriceSpecification",
-        minPrice: min,
+        ...(from ? { minPrice: value } : { price: value }),
         priceCurrency: "BYN",
         ...(hourly && { unitCode: "HUR", unitText: "час" }),
       },
