@@ -43,7 +43,10 @@ const services = offers.items.map((item) => {
   };
 });
 
-const prices = offers.items.map((item) => amount(item.price)).filter((value): value is number => value !== null);
+const prices = offers.items
+  .filter((item) => !item.price.includes("час"))
+  .map((item) => amount(item.price))
+  .filter((value): value is number => value !== null);
 
 export const homeSchema = {
   "@context": "https://schema.org",
@@ -82,7 +85,7 @@ export const homeSchema = {
       areaServed: { "@type": "City", name: contacts.city },
       maximumAttendeeCapacity: 55,
       currenciesAccepted: "BYN",
-      ...(prices.length > 0 && { priceRange: `от ${Math.min(...prices)} BYN` }),
+      ...(prices.length > 0 && { priceRange: `${Math.min(...prices)}–${Math.max(...prices)} BYN` }),
       amenityFeature: amenities.map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
       makesOffer: services,
       sameAs: [contacts.instagram.url, contacts.studioInstagram.url],

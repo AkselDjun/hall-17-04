@@ -242,7 +242,7 @@ export const offers = {
     {
       tag: "Аренда зала",
       title: "Мероприятие не под ключ",
-      price: "от [цена] BYN / час",
+      price: "от 120 BYN / час",
       features: ["Зал на ваше время", "Свет и LED-экраны", "Свои подрядчики и кейтеринг"],
       tone: "dark",
       wide: true,
