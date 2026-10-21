@@ -37,11 +37,15 @@
   background-position:
     0 7px,
     0 calc(100% - 7px);
+  backface-visibility: hidden;
+  will-change: transform;
   animation: roll 64s linear infinite;
 }
 
-.reel:hover .track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .reel:hover .track {
+    animation-play-state: paused;
+  }
 }
 
 .frame {
@@ -156,8 +160,12 @@
 }
 
 @keyframes roll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -305,7 +313,7 @@
   }
 
   .reel {
-    animation: reelIn 1.2s var(--ease) both;
+    animation: reelIn 1.2s var(--ease) backwards;
   }
 
   .eyebrow {
