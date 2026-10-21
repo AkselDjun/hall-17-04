@@ -365,6 +365,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .track {
-    animation: none;
+    animation-duration: 150s;
   }
 }
