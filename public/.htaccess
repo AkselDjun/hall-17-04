@@ -6,6 +6,9 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  RewriteCond %{HTTP_HOST} ^(www\.)?1704\.of\.by$ [NC]
+  RewriteRule ^ https://hall1704.of.by%{REQUEST_URI} [L,R=301]
+
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

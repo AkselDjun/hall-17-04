@@ -131,12 +131,12 @@ GitHub Pages раздаёт сайт из этой ветки (Settings → Page
 
 ## Хостинг hoster.by
 
-Боевой адрес сайта — https://1704.of.by. Сайт заливается вручную, как и alextvsat.
+Боевой адрес сайта — https://hall1704.of.by. Старый адрес 1704.of.by, если он подключён к той же папке, перенаправляется на новый правилом в `.htaccess`. Сайт заливается вручную, как и alextvsat.
 
 1. Соберите сайт для домена:
 
    ```bash
-   NEXT_PUBLIC_SITE_URL=https://1704.of.by NEXT_PUBLIC_INDEXABLE=true npm run build
+   NEXT_PUBLIC_SITE_URL=https://hall1704.of.by NEXT_PUBLIC_INDEXABLE=true npm run build
    ```
 
 2. Загрузите всё содержимое папки `out`, кроме `.nojekyll`, в корневую папку сайта (обычно `public_html`) через файловый менеджер панели или SFTP. Скрытый файл `.htaccess` тоже нужен: он включает HTTPS, убирает `www`, сжимает файлы и настраивает кеш. Скрипт формы окажется в `public_html/api/contact.php`.
