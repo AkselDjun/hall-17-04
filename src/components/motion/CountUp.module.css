@@ -3,11 +3,12 @@
   justify-items: end;
 }
 
-.reserve,
+.count::before,
 .live {
   grid-area: 1 / 1;
 }
 
-.reserve {
+.count::before {
+  content: attr(data-value);
   visibility: hidden;
 }

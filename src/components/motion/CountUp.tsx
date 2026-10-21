@@ -46,14 +46,8 @@ export function CountUp({ value, duration = 1600, className }: CountUpProps) {
   }, [value, duration]);
 
   return (
-    <span ref={ref} className={cx(styles.count, className)}>
-      <span className="visually-hidden">{format(value)}</span>
-      <span className={styles.reserve} aria-hidden="true">
-        {format(value)}
-      </span>
-      <span className={styles.live} aria-hidden="true">
-        {format(current)}
-      </span>
+    <span ref={ref} className={cx(styles.count, className)} data-value={format(value)}>
+      <span className={styles.live}>{format(current)}</span>
     </span>
   );
 }
