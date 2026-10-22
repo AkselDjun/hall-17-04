@@ -1,0 +1,26 @@
+2:"$Sreact.fragment"
+3:"/hall-17-04/_next/static/chunks/2hwaz1gkbfzg1.js"
+4:I[39756,["$3"],"default"]
+5:I[37457,["$3"],"default"]
+a:I[22016,["$3"],""]
+b:I[97367,["$3"],"OutletBoundary"]
+c:"$Sreact.suspense"
+f:"ViewportBoundary"
+10:I[97367,["$3"],"$f"]
+11:"MetadataBoundary"
+12:I[97367,["$3"],"$11"]
+13:I[27201,["$3"],"IconMark"]
+7:X
+7:C
+8:X
+9:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","main",null,{"className":"not-found","children":[["$","p",null,{"className":"not-found__kicker","children":"Ошибка 404"}],["$","h1",null,{"className":"not-found__title","children":"Этот кадр вырезан при монтаже"}],["$","$La",null,{"href":"/","className":"not-found__link","children":"Вернуться к фильму →"}]]}],null,["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]]}],"p":"$@e","v":null,"s":"$8"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@6","v":"$7","s":"$8"},"c":"$Q9"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L10",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#0b0b0a"}],["$","meta","3",{"name":"color-scheme","content":"dark"}]]}],["$","$L12",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Страница не найдена — HALL 17.04"}],["$","meta","1",{"name":"description","content":"Банкетный зал HALL 17.04 в Барановичах, ул. Ленина, 12: банкет до 55 гостей, сцена, свет и LED-экран. Свадьбы, юбилеи и дни рождения под ключ или аренда зала."}],["$","link","2",{"rel":"manifest","href":"/hall-17-04/manifest.webmanifest"}],["$","meta","3",{"name":"robots","content":"noindex, follow"}],["$","meta","4",{"name":"format-detection","content":"telephone=no"}],["$","link","5",{"rel":"icon","href":"/hall-17-04/favicon.ico?favicon.3ao9y9xarkhd-.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","6",{"rel":"icon","href":"/hall-17-04/icon.svg?icon.0zhdb2by_nxf0.svg","sizes":"any","type":"image/svg+xml"}],["$","link","7",{"rel":"apple-touch-icon","href":"/hall-17-04/apple-icon.png?apple-icon.11b9u5llh3ymp.png","sizes":"180x180","type":"image/png"}],["$","$L13","8",{}]]}]}],null]}],null]}],"p":"$@14","v":null,"s":"$8"}},"a":"$@15","u":"$@16","b":"_jGEwVl-54CDXLdG4oQUq"}
+d:null
+16:true
+8:300
+8:C
+15:0
+6:"$undefined"
+14:"$undefined"
+e:"$undefined"
