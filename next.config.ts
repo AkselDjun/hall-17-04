@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   basePath: basePath || undefined,
   trailingSlash: true,
   reactStrictMode: true,
+  experimental: {
+    inlineCss: true,
+  },
   images: {
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
